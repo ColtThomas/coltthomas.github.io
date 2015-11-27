@@ -131,7 +131,6 @@ background: url("images/home.jpg") no-repeat center center fixed;
   .feature-box {
     width: 32%;
     height: 100%;
-    background-color: #fff;
     position: relative;
   }
   
@@ -167,9 +166,13 @@ background: url("images/home.jpg") no-repeat center center fixed;
   } 
   
   @media only screen and  (min-width: 150px) and (max-width: 960px) {
-      
+      .profileBox {
+          width: 100%;
+          padding: 0;
+      }
       .opacityCover {
           height: 70%;
+          position: absolute;
       }
       
       .responsiveBorder {
@@ -179,20 +182,26 @@ background: url("images/home.jpg") no-repeat center center fixed;
       .mainPage-box {
           width: 100%;
           padding-bottom: 5%;
-          margin-bottom: 300px;
           position: initial;
           margin-top: 0;
-          /*background-color: #333;*/
-          /*opacity: 0.7;*/
       }
       
       .featureContainer {
           width: 100%;
-          /*position: relative;*/
+          height: 45%;
       }
       
       .feature-box {
           position: initial;
           width: 100%;
+          float: none;
+          margin: 0;
+          position: static;
+          margin-top: 65%
+      }
+      
+      .feature-box .title, .feature-box img{
+          position: static;
+          height: auto;
       }
   }
