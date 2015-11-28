@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+	[bootloader]F:\ecen390.3\ECEN390_Student_SW_0.2\anything\Debug\anything.elf
+	F:\ecen390.3\ECEN390_Student_SW_0.2\HWTest3_hw_platform\system.bit
+	F:\ecen390.3\ECEN390_Student_SW_0.2\Consolidated_330_SW\Debug\Consolidated_330_SW.elf
+}
