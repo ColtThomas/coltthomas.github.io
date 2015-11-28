@@ -1,1 +1,0 @@
-This is the remaining code of the laser tag project I did for my Junior Project in 2015.  All the documentation was done by hand.  I hope to scan all of the pages in and place them in this directory as a reference to the project.  Code here may be implemented at a future time.
