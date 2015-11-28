@@ -7,6 +7,9 @@
 	font-weight: 500;
 }
 
+.hide {
+    /*display: none;*/}
+
 .colorOne {
     color: #FFF4E6;
 }
@@ -143,7 +146,7 @@ background: url("../images/home.jpg") no-repeat center center fixed;
       background-color: #1478DB;
   }
   
-  .title {
+  .title , .description{
       width: 100%;
       color: #fff;
       /*height: 12%;*/
@@ -154,6 +157,15 @@ background: url("../images/home.jpg") no-repeat center center fixed;
       /*background-color: #1478DB;*/
       /*background: rgba(20,120,219,0.5);*/
   }
+  
+  .description {
+      top: 50%;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      color: #fff;
+  }
+  
   .featureOne {
      margin-right:2%;
      float: left;
