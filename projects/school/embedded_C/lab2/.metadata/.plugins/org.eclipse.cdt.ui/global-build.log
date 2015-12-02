@@ -1,0 +1,597 @@
+14:06:58 **** Incremental Build of configuration Debug for project Consolidated_330_SW ****
+make all 
+'Building target: Consolidated_330_SW.elf'
+'Invoking: ARM g++ linker'
+arm-xilinx-eabi-g++ -Wl,-T -Wl,../src/lscript.ld -L../../HW3_bsp/ps7_cortexa9_0/lib -o "Consolidated_330_SW.elf"  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: Consolidated_330_SW.elf'
+' '
+'Invoking: ARM Print Size'
+arm-xilinx-eabi-size Consolidated_330_SW.elf  |tee "Consolidated_330_SW.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 137316	   3172	  36048	 176536	  2b198	Consolidated_330_SW.elf
+'Finished building: Consolidated_330_SW.elf.size'
+' '
+14:07:54 **** Clean-only build of configuration Debug for project Consolidated_330_SW ****
+make clean 
+rm -rf  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o  ./supportFiles/glcdfont.d ./supportFiles/globalTimer.d ./supportFiles/interrupts.d ./supportFiles/lcd.d ./supportFiles/leds.d ./supportFiles/mio.d ./supportFiles/spi.d  ./src/switchesandbuttonslab2/buttons.d ./src/switchesandbuttonslab2/main.d ./src/switchesandbuttonslab2/switches.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  ./supportFiles/Adafruit_GFX.d ./supportFiles/Adafruit_STMPE610.d ./supportFiles/Adafruit_TFTLCD.d ./supportFiles/Print.d ./supportFiles/WString.d ./supportFiles/display.d ./supportFiles/new.d ./supportFiles/utils.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  Consolidated_330_SW.elf.size  Consolidated_330_SW.elf
+' '
+14:08:07 **** Auto Build of configuration Debug for project Consolidated_330_SW ****
+make all 
+'Building file: ../supportFiles/Adafruit_GFX.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_GFX.d" -MT"supportFiles/Adafruit_GFX.d" -o "supportFiles/Adafruit_GFX.o" "../supportFiles/Adafruit_GFX.cpp"
+'Finished building: ../supportFiles/Adafruit_GFX.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_STMPE610.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_STMPE610.d" -MT"supportFiles/Adafruit_STMPE610.d" -o "supportFiles/Adafruit_STMPE610.o" "../supportFiles/Adafruit_STMPE610.cpp"
+'Finished building: ../supportFiles/Adafruit_STMPE610.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_TFTLCD.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_TFTLCD.d" -MT"supportFiles/Adafruit_TFTLCD.d" -o "supportFiles/Adafruit_TFTLCD.o" "../supportFiles/Adafruit_TFTLCD.cpp"
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::begin(short unsigned int)':
+../supportFiles/Adafruit_TFTLCD.cpp:256:14: warning: unused variable 'a' [-Wunused-variable]
+     uint16_t a, d;
+              ^
+../supportFiles/Adafruit_TFTLCD.cpp:256:17: warning: unused variable 'd' [-Wunused-variable]
+     uint16_t a, d;
+                 ^
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::setRotation(unsigned char)':
+../supportFiles/Adafruit_TFTLCD.cpp:734:13: warning: 't' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    uint16_t t;
+             ^
+'Finished building: ../supportFiles/Adafruit_TFTLCD.cpp'
+' '
+'Building file: ../supportFiles/Print.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Print.d" -MT"supportFiles/Print.d" -o "supportFiles/Print.o" "../supportFiles/Print.cpp"
+'Finished building: ../supportFiles/Print.cpp'
+' '
+'Building file: ../supportFiles/WString.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/WString.d" -MT"supportFiles/WString.d" -o "supportFiles/WString.o" "../supportFiles/WString.cpp"
+'Finished building: ../supportFiles/WString.cpp'
+' '
+'Building file: ../supportFiles/display.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/display.d" -MT"supportFiles/display.d" -o "supportFiles/display.o" "../supportFiles/display.cpp"
+'Finished building: ../supportFiles/display.cpp'
+' '
+'Building file: ../supportFiles/glcdfont.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/glcdfont.d" -MT"supportFiles/glcdfont.d" -o "supportFiles/glcdfont.o" "../supportFiles/glcdfont.c"
+'Finished building: ../supportFiles/glcdfont.c'
+' '
+'Building file: ../supportFiles/globalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/globalTimer.d" -MT"supportFiles/globalTimer.d" -o "supportFiles/globalTimer.o" "../supportFiles/globalTimer.c"
+'Finished building: ../supportFiles/globalTimer.c'
+' '
+'Building file: ../supportFiles/interrupts.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/interrupts.d" -MT"supportFiles/interrupts.d" -o "supportFiles/interrupts.o" "../supportFiles/interrupts.c"
+../supportFiles/interrupts.c:46:12: warning: 'interrupts_isrFlagGlobal' initialized and declared 'extern' [enabled by default]
+ extern int interrupts_isrFlagGlobal = false;
+            ^
+'Finished building: ../supportFiles/interrupts.c'
+' '
+'Building file: ../supportFiles/lcd.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/lcd.d" -MT"supportFiles/lcd.d" -o "supportFiles/lcd.o" "../supportFiles/lcd.c"
+'Finished building: ../supportFiles/lcd.c'
+' '
+'Building file: ../supportFiles/leds.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/leds.d" -MT"supportFiles/leds.d" -o "supportFiles/leds.o" "../supportFiles/leds.c"
+'Finished building: ../supportFiles/leds.c'
+' '
+'Building file: ../supportFiles/mio.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/mio.d" -MT"supportFiles/mio.d" -o "supportFiles/mio.o" "../supportFiles/mio.c"
+'Finished building: ../supportFiles/mio.c'
+' '
+'Building file: ../supportFiles/new.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/new.d" -MT"supportFiles/new.d" -o "supportFiles/new.o" "../supportFiles/new.cpp"
+'Finished building: ../supportFiles/new.cpp'
+' '
+'Building file: ../supportFiles/spi.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/spi.d" -MT"supportFiles/spi.d" -o "supportFiles/spi.o" "../supportFiles/spi.c"
+'Finished building: ../supportFiles/spi.c'
+' '
+'Building file: ../supportFiles/utils.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/utils.d" -MT"supportFiles/utils.d" -o "supportFiles/utils.o" "../supportFiles/utils.cpp"
+'Finished building: ../supportFiles/utils.cpp'
+' '
+'Building file: ../src/switchesandbuttonslab2/buttons.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/buttons.d" -MT"src/switchesandbuttonslab2/buttons.d" -o "src/switchesandbuttonslab2/buttons.o" "../src/switchesandbuttonslab2/buttons.c"
+'Finished building: ../src/switchesandbuttonslab2/buttons.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/main.d" -MT"src/switchesandbuttonslab2/main.d" -o "src/switchesandbuttonslab2/main.o" "../src/switchesandbuttonslab2/main.c"
+'Finished building: ../src/switchesandbuttonslab2/main.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/switches.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/switches.d" -MT"src/switchesandbuttonslab2/switches.d" -o "src/switchesandbuttonslab2/switches.o" "../src/switchesandbuttonslab2/switches.c"
+'Finished building: ../src/switchesandbuttonslab2/switches.c'
+' '
+'Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+'Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+' '
+'Building target: Consolidated_330_SW.elf'
+'Invoking: ARM g++ linker'
+arm-xilinx-eabi-g++ -Wl,-T -Wl,../src/lscript.ld -L../../HW3_bsp/ps7_cortexa9_0/lib -o "Consolidated_330_SW.elf"  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.2/buttons.o ./src/intervaltimers_Lab3.2/intervalTimer.o ./src/intervaltimers_Lab3.2/main.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_init()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:18: multiple definition of `buttons_init()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:12: first defined here
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_read()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:36: multiple definition of `buttons_read()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:20: first defined here
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_runTest()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:46: multiple definition of `buttons_runTest()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:31: first defined here
+./src/intervaltimers_Lab3.2/main.o: In function `main':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/main.c:11: multiple definition of `main'
+./src/switchesandbuttonslab2/main.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/main.c:6: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid(unsigned long)':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_isValid(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:16: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_start(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:108: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_stop(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:135: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_reset(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:167: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_init(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:194: first defined here
+./src/intervaltimers_Lab3.1/main.o: In function `readTimer1Register':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/main.c:35: multiple definition of `main'
+./src/switchesandbuttonslab2/main.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/main.c:6: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [Consolidated_330_SW.elf] Error 1
+14:09:10 **** Clean-only build of configuration Debug for project Consolidated_330_SW ****
+make clean 
+rm -rf  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.2/buttons.o ./src/intervaltimers_Lab3.2/intervalTimer.o ./src/intervaltimers_Lab3.2/main.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o  ./supportFiles/glcdfont.d ./supportFiles/globalTimer.d ./supportFiles/interrupts.d ./supportFiles/lcd.d ./supportFiles/leds.d ./supportFiles/mio.d ./supportFiles/spi.d  ./src/switchesandbuttonslab2/buttons.d ./src/switchesandbuttonslab2/main.d ./src/switchesandbuttonslab2/switches.d  ./src/intervaltimers_Lab3.2/buttons.d ./src/intervaltimers_Lab3.2/intervalTimer.d ./src/intervaltimers_Lab3.2/main.d  ./src/intervaltimers_Lab3.1/intervalTimer.d ./src/intervaltimers_Lab3.1/main.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  ./supportFiles/Adafruit_GFX.d ./supportFiles/Adafruit_STMPE610.d ./supportFiles/Adafruit_TFTLCD.d ./supportFiles/Print.d ./supportFiles/WString.d ./supportFiles/display.d ./supportFiles/new.d ./supportFiles/utils.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  Consolidated_330_SW.elf.size  Consolidated_330_SW.elf
+' '
+14:09:25 **** Auto Build of configuration Debug for project Consolidated_330_SW ****
+make all 
+'Building file: ../supportFiles/Adafruit_GFX.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_GFX.d" -MT"supportFiles/Adafruit_GFX.d" -o "supportFiles/Adafruit_GFX.o" "../supportFiles/Adafruit_GFX.cpp"
+'Finished building: ../supportFiles/Adafruit_GFX.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_STMPE610.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_STMPE610.d" -MT"supportFiles/Adafruit_STMPE610.d" -o "supportFiles/Adafruit_STMPE610.o" "../supportFiles/Adafruit_STMPE610.cpp"
+'Finished building: ../supportFiles/Adafruit_STMPE610.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_TFTLCD.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_TFTLCD.d" -MT"supportFiles/Adafruit_TFTLCD.d" -o "supportFiles/Adafruit_TFTLCD.o" "../supportFiles/Adafruit_TFTLCD.cpp"
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::begin(short unsigned int)':
+../supportFiles/Adafruit_TFTLCD.cpp:256:14: warning: unused variable 'a' [-Wunused-variable]
+     uint16_t a, d;
+              ^
+../supportFiles/Adafruit_TFTLCD.cpp:256:17: warning: unused variable 'd' [-Wunused-variable]
+     uint16_t a, d;
+                 ^
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::setRotation(unsigned char)':
+../supportFiles/Adafruit_TFTLCD.cpp:734:13: warning: 't' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    uint16_t t;
+             ^
+'Finished building: ../supportFiles/Adafruit_TFTLCD.cpp'
+' '
+'Building file: ../supportFiles/Print.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Print.d" -MT"supportFiles/Print.d" -o "supportFiles/Print.o" "../supportFiles/Print.cpp"
+'Finished building: ../supportFiles/Print.cpp'
+' '
+'Building file: ../supportFiles/WString.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/WString.d" -MT"supportFiles/WString.d" -o "supportFiles/WString.o" "../supportFiles/WString.cpp"
+'Finished building: ../supportFiles/WString.cpp'
+' '
+'Building file: ../supportFiles/display.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/display.d" -MT"supportFiles/display.d" -o "supportFiles/display.o" "../supportFiles/display.cpp"
+'Finished building: ../supportFiles/display.cpp'
+' '
+'Building file: ../supportFiles/glcdfont.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/glcdfont.d" -MT"supportFiles/glcdfont.d" -o "supportFiles/glcdfont.o" "../supportFiles/glcdfont.c"
+'Finished building: ../supportFiles/glcdfont.c'
+' '
+'Building file: ../supportFiles/globalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/globalTimer.d" -MT"supportFiles/globalTimer.d" -o "supportFiles/globalTimer.o" "../supportFiles/globalTimer.c"
+'Finished building: ../supportFiles/globalTimer.c'
+' '
+'Building file: ../supportFiles/interrupts.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/interrupts.d" -MT"supportFiles/interrupts.d" -o "supportFiles/interrupts.o" "../supportFiles/interrupts.c"
+../supportFiles/interrupts.c:46:12: warning: 'interrupts_isrFlagGlobal' initialized and declared 'extern' [enabled by default]
+ extern int interrupts_isrFlagGlobal = false;
+            ^
+'Finished building: ../supportFiles/interrupts.c'
+' '
+'Building file: ../supportFiles/lcd.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/lcd.d" -MT"supportFiles/lcd.d" -o "supportFiles/lcd.o" "../supportFiles/lcd.c"
+'Finished building: ../supportFiles/lcd.c'
+' '
+'Building file: ../supportFiles/leds.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/leds.d" -MT"supportFiles/leds.d" -o "supportFiles/leds.o" "../supportFiles/leds.c"
+'Finished building: ../supportFiles/leds.c'
+' '
+'Building file: ../supportFiles/mio.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/mio.d" -MT"supportFiles/mio.d" -o "supportFiles/mio.o" "../supportFiles/mio.c"
+'Finished building: ../supportFiles/mio.c'
+' '
+'Building file: ../supportFiles/new.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/new.d" -MT"supportFiles/new.d" -o "supportFiles/new.o" "../supportFiles/new.cpp"
+'Finished building: ../supportFiles/new.cpp'
+' '
+'Building file: ../supportFiles/spi.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/spi.d" -MT"supportFiles/spi.d" -o "supportFiles/spi.o" "../supportFiles/spi.c"
+'Finished building: ../supportFiles/spi.c'
+' '
+'Building file: ../supportFiles/utils.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/utils.d" -MT"supportFiles/utils.d" -o "supportFiles/utils.o" "../supportFiles/utils.cpp"
+'Finished building: ../supportFiles/utils.cpp'
+' '
+'Building file: ../src/switchesandbuttonslab2/buttons.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/buttons.d" -MT"src/switchesandbuttonslab2/buttons.d" -o "src/switchesandbuttonslab2/buttons.o" "../src/switchesandbuttonslab2/buttons.c"
+'Finished building: ../src/switchesandbuttonslab2/buttons.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/main.d" -MT"src/switchesandbuttonslab2/main.d" -o "src/switchesandbuttonslab2/main.o" "../src/switchesandbuttonslab2/main.c"
+'Finished building: ../src/switchesandbuttonslab2/main.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/switches.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/switches.d" -MT"src/switchesandbuttonslab2/switches.d" -o "src/switchesandbuttonslab2/switches.o" "../src/switchesandbuttonslab2/switches.c"
+'Finished building: ../src/switchesandbuttonslab2/switches.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.2/buttons.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.2/buttons.d" -MT"src/intervaltimers_Lab3.2/buttons.d" -o "src/intervaltimers_Lab3.2/buttons.o" "../src/intervaltimers_Lab3.2/buttons.c"
+'Finished building: ../src/intervaltimers_Lab3.2/buttons.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.2/intervalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.2/intervalTimer.d" -MT"src/intervaltimers_Lab3.2/intervalTimer.d" -o "src/intervaltimers_Lab3.2/intervalTimer.o" "../src/intervaltimers_Lab3.2/intervalTimer.c"
+'Finished building: ../src/intervaltimers_Lab3.2/intervalTimer.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.2/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.2/main.d" -MT"src/intervaltimers_Lab3.2/main.d" -o "src/intervaltimers_Lab3.2/main.o" "../src/intervaltimers_Lab3.2/main.c"
+'Finished building: ../src/intervaltimers_Lab3.2/main.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.1/intervalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.1/intervalTimer.d" -MT"src/intervaltimers_Lab3.1/intervalTimer.d" -o "src/intervaltimers_Lab3.1/intervalTimer.o" "../src/intervaltimers_Lab3.1/intervalTimer.c"
+'Finished building: ../src/intervaltimers_Lab3.1/intervalTimer.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.1/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.1/main.d" -MT"src/intervaltimers_Lab3.1/main.d" -o "src/intervaltimers_Lab3.1/main.o" "../src/intervaltimers_Lab3.1/main.c"
+'Finished building: ../src/intervaltimers_Lab3.1/main.c'
+' '
+'Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+'Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+' '
+'Building target: Consolidated_330_SW.elf'
+'Invoking: ARM g++ linker'
+arm-xilinx-eabi-g++ -Wl,-T -Wl,../src/lscript.ld -L../../HW3_bsp/ps7_cortexa9_0/lib -o "Consolidated_330_SW.elf"  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.2/buttons.o ./src/intervaltimers_Lab3.2/intervalTimer.o ./src/intervaltimers_Lab3.2/main.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_init()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:18: multiple definition of `buttons_init()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:12: first defined here
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_read()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:36: multiple definition of `buttons_read()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:20: first defined here
+./src/intervaltimers_Lab3.2/buttons.o: In function `buttons_runTest()':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/buttons.c:46: multiple definition of `buttons_runTest()'
+./src/switchesandbuttonslab2/buttons.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/buttons.c:31: first defined here
+./src/intervaltimers_Lab3.2/main.o: In function `main':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/main.c:11: multiple definition of `main'
+./src/switchesandbuttonslab2/main.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/main.c:6: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid(unsigned long)':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_isValid(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:16: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_start(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:108: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_stop(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:135: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_reset(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:167: first defined here
+./src/intervaltimers_Lab3.1/intervalTimer.o: In function `intervalTimer_isValid':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/intervalTimer.c:16: multiple definition of `intervalTimer_init(unsigned long)'
+./src/intervaltimers_Lab3.2/intervalTimer.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.2/intervalTimer.c:194: first defined here
+./src/intervaltimers_Lab3.1/main.o: In function `readTimer1Register':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/main.c:35: multiple definition of `main'
+./src/switchesandbuttonslab2/main.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/main.c:6: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [Consolidated_330_SW.elf] Error 1
+14:10:38 **** Clean-only build of configuration Debug for project Consolidated_330_SW ****
+make clean 
+rm -rf  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.2/buttons.o ./src/intervaltimers_Lab3.2/intervalTimer.o ./src/intervaltimers_Lab3.2/main.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o  ./supportFiles/glcdfont.d ./supportFiles/globalTimer.d ./supportFiles/interrupts.d ./supportFiles/lcd.d ./supportFiles/leds.d ./supportFiles/mio.d ./supportFiles/spi.d  ./src/switchesandbuttonslab2/buttons.d ./src/switchesandbuttonslab2/main.d ./src/switchesandbuttonslab2/switches.d  ./src/intervaltimers_Lab3.2/buttons.d ./src/intervaltimers_Lab3.2/intervalTimer.d ./src/intervaltimers_Lab3.2/main.d  ./src/intervaltimers_Lab3.1/intervalTimer.d ./src/intervaltimers_Lab3.1/main.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  ./supportFiles/Adafruit_GFX.d ./supportFiles/Adafruit_STMPE610.d ./supportFiles/Adafruit_TFTLCD.d ./supportFiles/Print.d ./supportFiles/WString.d ./supportFiles/display.d ./supportFiles/new.d ./supportFiles/utils.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  Consolidated_330_SW.elf.size  Consolidated_330_SW.elf
+' '
+14:10:55 **** Auto Build of configuration Debug for project Consolidated_330_SW ****
+make all 
+'Building file: ../supportFiles/Adafruit_GFX.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_GFX.d" -MT"supportFiles/Adafruit_GFX.d" -o "supportFiles/Adafruit_GFX.o" "../supportFiles/Adafruit_GFX.cpp"
+'Finished building: ../supportFiles/Adafruit_GFX.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_STMPE610.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_STMPE610.d" -MT"supportFiles/Adafruit_STMPE610.d" -o "supportFiles/Adafruit_STMPE610.o" "../supportFiles/Adafruit_STMPE610.cpp"
+'Finished building: ../supportFiles/Adafruit_STMPE610.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_TFTLCD.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_TFTLCD.d" -MT"supportFiles/Adafruit_TFTLCD.d" -o "supportFiles/Adafruit_TFTLCD.o" "../supportFiles/Adafruit_TFTLCD.cpp"
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::begin(short unsigned int)':
+../supportFiles/Adafruit_TFTLCD.cpp:256:14: warning: unused variable 'a' [-Wunused-variable]
+     uint16_t a, d;
+              ^
+../supportFiles/Adafruit_TFTLCD.cpp:256:17: warning: unused variable 'd' [-Wunused-variable]
+     uint16_t a, d;
+                 ^
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::setRotation(unsigned char)':
+../supportFiles/Adafruit_TFTLCD.cpp:734:13: warning: 't' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    uint16_t t;
+             ^
+'Finished building: ../supportFiles/Adafruit_TFTLCD.cpp'
+' '
+'Building file: ../supportFiles/Print.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Print.d" -MT"supportFiles/Print.d" -o "supportFiles/Print.o" "../supportFiles/Print.cpp"
+'Finished building: ../supportFiles/Print.cpp'
+' '
+'Building file: ../supportFiles/WString.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/WString.d" -MT"supportFiles/WString.d" -o "supportFiles/WString.o" "../supportFiles/WString.cpp"
+'Finished building: ../supportFiles/WString.cpp'
+' '
+'Building file: ../supportFiles/display.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/display.d" -MT"supportFiles/display.d" -o "supportFiles/display.o" "../supportFiles/display.cpp"
+'Finished building: ../supportFiles/display.cpp'
+' '
+'Building file: ../supportFiles/glcdfont.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/glcdfont.d" -MT"supportFiles/glcdfont.d" -o "supportFiles/glcdfont.o" "../supportFiles/glcdfont.c"
+'Finished building: ../supportFiles/glcdfont.c'
+' '
+'Building file: ../supportFiles/globalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/globalTimer.d" -MT"supportFiles/globalTimer.d" -o "supportFiles/globalTimer.o" "../supportFiles/globalTimer.c"
+'Finished building: ../supportFiles/globalTimer.c'
+' '
+'Building file: ../supportFiles/interrupts.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/interrupts.d" -MT"supportFiles/interrupts.d" -o "supportFiles/interrupts.o" "../supportFiles/interrupts.c"
+../supportFiles/interrupts.c:46:12: warning: 'interrupts_isrFlagGlobal' initialized and declared 'extern' [enabled by default]
+ extern int interrupts_isrFlagGlobal = false;
+            ^
+'Finished building: ../supportFiles/interrupts.c'
+' '
+'Building file: ../supportFiles/lcd.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/lcd.d" -MT"supportFiles/lcd.d" -o "supportFiles/lcd.o" "../supportFiles/lcd.c"
+'Finished building: ../supportFiles/lcd.c'
+' '
+'Building file: ../supportFiles/leds.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/leds.d" -MT"supportFiles/leds.d" -o "supportFiles/leds.o" "../supportFiles/leds.c"
+'Finished building: ../supportFiles/leds.c'
+' '
+'Building file: ../supportFiles/mio.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/mio.d" -MT"supportFiles/mio.d" -o "supportFiles/mio.o" "../supportFiles/mio.c"
+'Finished building: ../supportFiles/mio.c'
+' '
+'Building file: ../supportFiles/new.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/new.d" -MT"supportFiles/new.d" -o "supportFiles/new.o" "../supportFiles/new.cpp"
+'Finished building: ../supportFiles/new.cpp'
+' '
+'Building file: ../supportFiles/spi.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/spi.d" -MT"supportFiles/spi.d" -o "supportFiles/spi.o" "../supportFiles/spi.c"
+'Finished building: ../supportFiles/spi.c'
+' '
+'Building file: ../supportFiles/utils.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/utils.d" -MT"supportFiles/utils.d" -o "supportFiles/utils.o" "../supportFiles/utils.cpp"
+'Finished building: ../supportFiles/utils.cpp'
+' '
+'Building file: ../src/switchesandbuttonslab2/buttons.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/buttons.d" -MT"src/switchesandbuttonslab2/buttons.d" -o "src/switchesandbuttonslab2/buttons.o" "../src/switchesandbuttonslab2/buttons.c"
+'Finished building: ../src/switchesandbuttonslab2/buttons.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/main.d" -MT"src/switchesandbuttonslab2/main.d" -o "src/switchesandbuttonslab2/main.o" "../src/switchesandbuttonslab2/main.c"
+'Finished building: ../src/switchesandbuttonslab2/main.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/switches.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/switches.d" -MT"src/switchesandbuttonslab2/switches.d" -o "src/switchesandbuttonslab2/switches.o" "../src/switchesandbuttonslab2/switches.c"
+'Finished building: ../src/switchesandbuttonslab2/switches.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.1/intervalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.1/intervalTimer.d" -MT"src/intervaltimers_Lab3.1/intervalTimer.d" -o "src/intervaltimers_Lab3.1/intervalTimer.o" "../src/intervaltimers_Lab3.1/intervalTimer.c"
+'Finished building: ../src/intervaltimers_Lab3.1/intervalTimer.c'
+' '
+'Building file: ../src/intervaltimers_Lab3.1/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/intervaltimers_Lab3.1/main.d" -MT"src/intervaltimers_Lab3.1/main.d" -o "src/intervaltimers_Lab3.1/main.o" "../src/intervaltimers_Lab3.1/main.c"
+'Finished building: ../src/intervaltimers_Lab3.1/main.c'
+' '
+'Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+'Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+' '
+'Building target: Consolidated_330_SW.elf'
+'Invoking: ARM g++ linker'
+arm-xilinx-eabi-g++ -Wl,-T -Wl,../src/lscript.ld -L../../HW3_bsp/ps7_cortexa9_0/lib -o "Consolidated_330_SW.elf"  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+./src/intervaltimers_Lab3.1/main.o: In function `readTimer1Register':
+J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/intervaltimers_Lab3.1/main.c:35: multiple definition of `main'
+./src/switchesandbuttonslab2/main.o:J:\ecen330\lab2\Consolidated_330_SW\Debug/../src/switchesandbuttonslab2/main.c:6: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [Consolidated_330_SW.elf] Error 1
+14:11:59 **** Clean-only build of configuration Debug for project Consolidated_330_SW ****
+make clean 
+rm -rf  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./src/intervaltimers_Lab3.1/intervalTimer.o ./src/intervaltimers_Lab3.1/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o  ./supportFiles/glcdfont.d ./supportFiles/globalTimer.d ./supportFiles/interrupts.d ./supportFiles/lcd.d ./supportFiles/leds.d ./supportFiles/mio.d ./supportFiles/spi.d  ./src/switchesandbuttonslab2/buttons.d ./src/switchesandbuttonslab2/main.d ./src/switchesandbuttonslab2/switches.d  ./src/intervaltimers_Lab3.1/intervalTimer.d ./src/intervaltimers_Lab3.1/main.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  ./supportFiles/Adafruit_GFX.d ./supportFiles/Adafruit_STMPE610.d ./supportFiles/Adafruit_TFTLCD.d ./supportFiles/Print.d ./supportFiles/WString.d ./supportFiles/display.d ./supportFiles/new.d ./supportFiles/utils.d  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d  Consolidated_330_SW.elf.size  Consolidated_330_SW.elf
+' '
+14:12:15 **** Auto Build of configuration Debug for project Consolidated_330_SW ****
+make all 
+'Building file: ../supportFiles/Adafruit_GFX.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_GFX.d" -MT"supportFiles/Adafruit_GFX.d" -o "supportFiles/Adafruit_GFX.o" "../supportFiles/Adafruit_GFX.cpp"
+'Finished building: ../supportFiles/Adafruit_GFX.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_STMPE610.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_STMPE610.d" -MT"supportFiles/Adafruit_STMPE610.d" -o "supportFiles/Adafruit_STMPE610.o" "../supportFiles/Adafruit_STMPE610.cpp"
+'Finished building: ../supportFiles/Adafruit_STMPE610.cpp'
+' '
+'Building file: ../supportFiles/Adafruit_TFTLCD.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Adafruit_TFTLCD.d" -MT"supportFiles/Adafruit_TFTLCD.d" -o "supportFiles/Adafruit_TFTLCD.o" "../supportFiles/Adafruit_TFTLCD.cpp"
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::begin(short unsigned int)':
+../supportFiles/Adafruit_TFTLCD.cpp:256:14: warning: unused variable 'a' [-Wunused-variable]
+     uint16_t a, d;
+              ^
+../supportFiles/Adafruit_TFTLCD.cpp:256:17: warning: unused variable 'd' [-Wunused-variable]
+     uint16_t a, d;
+                 ^
+../supportFiles/Adafruit_TFTLCD.cpp: In member function 'void Adafruit_TFTLCD::setRotation(unsigned char)':
+../supportFiles/Adafruit_TFTLCD.cpp:734:13: warning: 't' may be used uninitialized in this function [-Wmaybe-uninitialized]
+    uint16_t t;
+             ^
+'Finished building: ../supportFiles/Adafruit_TFTLCD.cpp'
+' '
+'Building file: ../supportFiles/Print.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/Print.d" -MT"supportFiles/Print.d" -o "supportFiles/Print.o" "../supportFiles/Print.cpp"
+'Finished building: ../supportFiles/Print.cpp'
+' '
+'Building file: ../supportFiles/WString.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/WString.d" -MT"supportFiles/WString.d" -o "supportFiles/WString.o" "../supportFiles/WString.cpp"
+'Finished building: ../supportFiles/WString.cpp'
+' '
+'Building file: ../supportFiles/display.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/display.d" -MT"supportFiles/display.d" -o "supportFiles/display.o" "../supportFiles/display.cpp"
+'Finished building: ../supportFiles/display.cpp'
+' '
+'Building file: ../supportFiles/glcdfont.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/glcdfont.d" -MT"supportFiles/glcdfont.d" -o "supportFiles/glcdfont.o" "../supportFiles/glcdfont.c"
+'Finished building: ../supportFiles/glcdfont.c'
+' '
+'Building file: ../supportFiles/globalTimer.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/globalTimer.d" -MT"supportFiles/globalTimer.d" -o "supportFiles/globalTimer.o" "../supportFiles/globalTimer.c"
+'Finished building: ../supportFiles/globalTimer.c'
+' '
+'Building file: ../supportFiles/interrupts.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/interrupts.d" -MT"supportFiles/interrupts.d" -o "supportFiles/interrupts.o" "../supportFiles/interrupts.c"
+../supportFiles/interrupts.c:46:12: warning: 'interrupts_isrFlagGlobal' initialized and declared 'extern' [enabled by default]
+ extern int interrupts_isrFlagGlobal = false;
+            ^
+'Finished building: ../supportFiles/interrupts.c'
+' '
+'Building file: ../supportFiles/lcd.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/lcd.d" -MT"supportFiles/lcd.d" -o "supportFiles/lcd.o" "../supportFiles/lcd.c"
+'Finished building: ../supportFiles/lcd.c'
+' '
+'Building file: ../supportFiles/leds.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/leds.d" -MT"supportFiles/leds.d" -o "supportFiles/leds.o" "../supportFiles/leds.c"
+'Finished building: ../supportFiles/leds.c'
+' '
+'Building file: ../supportFiles/mio.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/mio.d" -MT"supportFiles/mio.d" -o "supportFiles/mio.o" "../supportFiles/mio.c"
+'Finished building: ../supportFiles/mio.c'
+' '
+'Building file: ../supportFiles/new.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/new.d" -MT"supportFiles/new.d" -o "supportFiles/new.o" "../supportFiles/new.cpp"
+'Finished building: ../supportFiles/new.cpp'
+' '
+'Building file: ../supportFiles/spi.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/spi.d" -MT"supportFiles/spi.d" -o "supportFiles/spi.o" "../supportFiles/spi.c"
+'Finished building: ../supportFiles/spi.c'
+' '
+'Building file: ../supportFiles/utils.cpp'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"supportFiles/utils.d" -MT"supportFiles/utils.d" -o "supportFiles/utils.o" "../supportFiles/utils.cpp"
+'Finished building: ../supportFiles/utils.cpp'
+' '
+'Building file: ../src/switchesandbuttonslab2/buttons.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/buttons.d" -MT"src/switchesandbuttonslab2/buttons.d" -o "src/switchesandbuttonslab2/buttons.o" "../src/switchesandbuttonslab2/buttons.c"
+'Finished building: ../src/switchesandbuttonslab2/buttons.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/main.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/main.d" -MT"src/switchesandbuttonslab2/main.d" -o "src/switchesandbuttonslab2/main.o" "../src/switchesandbuttonslab2/main.c"
+'Finished building: ../src/switchesandbuttonslab2/main.c'
+' '
+'Building file: ../src/switchesandbuttonslab2/switches.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/switchesandbuttonslab2/switches.d" -MT"src/switchesandbuttonslab2/switches.d" -o "src/switchesandbuttonslab2/switches.o" "../src/switchesandbuttonslab2/switches.c"
+'Finished building: ../src/switchesandbuttonslab2/switches.c'
+' '
+'Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+'Invoking: ARM g++ compiler'
+arm-xilinx-eabi-g++ -Wall -O2 -finline-functions -g3 -I"J:\ecen330\lab2\Consolidated_330_SW" -c -fmessage-length=0 -I../../HW3_bsp/ps7_cortexa9_0/include -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+'Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+' '
+'Building target: Consolidated_330_SW.elf'
+'Invoking: ARM g++ linker'
+arm-xilinx-eabi-g++ -Wl,-T -Wl,../src/lscript.ld -L../../HW3_bsp/ps7_cortexa9_0/lib -o "Consolidated_330_SW.elf"  ./supportFiles/Adafruit_GFX.o ./supportFiles/Adafruit_STMPE610.o ./supportFiles/Adafruit_TFTLCD.o ./supportFiles/Print.o ./supportFiles/WString.o ./supportFiles/display.o ./supportFiles/glcdfont.o ./supportFiles/globalTimer.o ./supportFiles/interrupts.o ./supportFiles/lcd.o ./supportFiles/leds.o ./supportFiles/mio.o ./supportFiles/new.o ./supportFiles/spi.o ./supportFiles/utils.o  ./src/switchesandbuttonslab2/buttons.o ./src/switchesandbuttonslab2/main.o ./src/switchesandbuttonslab2/switches.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -Wl,--start-group,-lxil,-lgcc,-lc,-lstdc++,--end-group
+'Finished building target: Consolidated_330_SW.elf'
+' '
+'Invoking: ARM Print Size'
+arm-xilinx-eabi-size Consolidated_330_SW.elf  |tee "Consolidated_330_SW.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 137316	   3172	  36048	 176536	  2b198	Consolidated_330_SW.elf
+'Finished building: Consolidated_330_SW.elf.size'
+' '

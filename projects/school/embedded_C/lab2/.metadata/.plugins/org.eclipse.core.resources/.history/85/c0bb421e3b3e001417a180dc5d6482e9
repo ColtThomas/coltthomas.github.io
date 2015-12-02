@@ -1,0 +1,10 @@
+
+#include <stdio.h>
+#include "supportFiles/leds.h"
+#include "switches.h"
+#include "buttons.h"
+
+int main(){
+	switches_runTest();
+	buttons_runTest();
+}

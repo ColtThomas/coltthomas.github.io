@@ -1,0 +1,79 @@
+#include "stdio.h"
+#include "xil_io.h"
+#include "buttons.h"
+#include "supportFiles/leds.h"
+#include "supportFiles/display.h"
+
+#define YELLOW 0xFFE0
+#define RED 0xF800
+#define GREEN 0x07E0
+
+// Initializes the button driver software and hardware. Returns one of the defined status values (above).
+int buttons_init() {
+	Xil_Out32(XPAR_GPIO_PUSH_BUTTONS_BASEADDR + 0x4, 0xF);
+		return BUTTONS_INIT_STATUS_OK;
+}
+
+// Returns the current value of all 4 buttons as the lower 4 bits of the returned value.
+// bit3 = BTN3, bit2 = BTN2, bit1 = BTN1, bit0 = BTN0.
+int32_t buttons_read() {
+	uint32_t *ptr = (uint32_t *) XPAR_GPIO_PUSH_BUTTONS_BASEADDR;
+	return *ptr;
+}
+
+// Runs a test of the buttons. As you push the buttons, graphics and messages will be written to the LCD
+// panel. The test will until all 4 pushbuttons are simultaneously pressed.
+void buttons_runTest() {
+	buttons_init();
+	leds_init(true);
+	uint32_t button_value = buttons_read() & 0xF;
+
+	display_drawLine(0,0,240,320,GREEN);
+	display_drawLine(240,0,0,320,GREEN);
+	display_fillScreen(DISPLAY_BLACK);
+	display_drawLine(0,0,320,240,GREEN);
+	display_drawLine(0,240,320,0,GREEN);
+	display_drawCircle(80,120,30,RED);
+	display_fillCircle(240,120,30,RED);
+	display_drawTriangle(160 ,90, 134,45, 186,45, YELLOW);
+	display_fillTriangle(160,150 , 134,195 , 186,195 ,YELLOW);
+	while((buttons_read() & 0xF)  < 15){
+		leds_write(button_value);
+		//button_value  = buttons_read() & 0xF;
+
+		if ((buttons_read() & 0xF) & 0x1) {
+			display_fillCircle(0,0,30,GREEN);
+		}
+		else {
+			display_fillCircle(0,0,30,YELLOW);
+		}
+
+		if ((buttons_read() & 0xF) & 0x2) {
+			display_fillCircle(0,240,30,RED);
+
+		}
+		else {
+			display_fillCircle(0,240,30,YELLOW);
+		}
+
+
+		//button 1
+		if ((buttons_read() & 0xF) & 0x4) {
+			display_fillCircle(320,0,30,YELLOW);
+		}
+		else {
+			display_fillCircle(320,0,30,RED);
+		}
+
+		if ((buttons_read() & 0xF) & 0x8) {
+			display_fillCircle(320,240,30,RED);
+
+		}
+		else {
+			display_fillCircle(320,240,30,YELLOW);
+		}
+		button_value  = buttons_read() & 0xF;
+	}
+
+	leds_write(0x0000);
+}

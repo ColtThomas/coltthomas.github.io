@@ -1,0 +1,15 @@
+19:58:39 **** Build of project HW3_bsp ****
+make -k all 
+libgen -hw \
+	       \
+process_begin: CreateProcess(NULL, libgen -hw -pe -log libgen.log system.mss, ...) failed.
+	       -pe  \
+	       -log libgen.log \
+make (e=2): The system cannot find the file specified.
+
+	       system.mss
+make: *** [/lib/libxil.a] Error 2
+make: Target `all' not remade because of errors.
+
+19:58:39 Build Finished (took 141ms)
+
