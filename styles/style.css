@@ -132,38 +132,46 @@ background: url("../images/home.jpg") no-repeat center center fixed;
   }
   
   .feature-box {
-    width: 32%;
-    height: 100%;
+    width: 30%;
+    height: 98%;
     position: relative;
+    padding: 1% 1%;
+/*    border-style: solid;
+    border-width: 4px;*/
+    background-color: #1478DB;
   }
   
   .feature-box img {
-      height: 95%;
-      width: 95%;
+      height: 100%;
+      width: 100%;
+      /*margin: 0 2.5%;*/
       overflow: hidden;
-      position: absolute;
-      padding: 2.5% 2.5%;
-      background-color: #1478DB;
+      
+      // consider using padding for the mobile version
+      /*padding: 2.5% 2.5%;*/
+      
   }
   
+  
   .title , .description{
-      width: 100%;
       color: #fff;
-      /*height: 12%;*/
       top: 50%;
+      left: 3%;
+      right: 3%;
       position: absolute;
       text-align: center;
-      /*opacity: 0.5;*/
-      /*background-color: #1478DB;*/
-      /*background: rgba(20,120,219,0.5);*/
+      margin: auto;
   }
   
   .description {
-      top: 50%;
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      color: #fff;
+      /*top: 50%;*/
+      /*position: absolute;*/
+      /*text-align: center;*/
+      /*width: 100%;*/
+      /*margin: 0 10% 2.5% 10%;*/
+      /*height: 50%;*/
+      /*color: #fff;*/
+      background-color: #555;
   }
   
   .featureOne {
