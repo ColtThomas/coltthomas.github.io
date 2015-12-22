@@ -153,17 +153,20 @@ background: url("../images/home.jpg") no-repeat center center fixed;
   }
   
   
-  .title , .description{
+  .title , .description, .description-background{
       color: #fff;
-      top: 50%;
-      left: 3%;
-      right: 3%;
+      top: 5%;
+      bottom: 5%;
+      left: 5%;
+      right: 5%;
       position: absolute;
       text-align: center;
       margin: auto;
+      z-index: 3;
+      /*opacity: 0.5;*/
   }
   
-  .description {
+  .description-background {
       /*top: 50%;*/
       /*position: absolute;*/
       /*text-align: center;*/
@@ -171,7 +174,9 @@ background: url("../images/home.jpg") no-repeat center center fixed;
       /*margin: 0 10% 2.5% 10%;*/
       /*height: 50%;*/
       /*color: #fff;*/
+      z-index: 2;
       background-color: #555;
+      opacity: 0.5;
   }
   
   .featureOne {
