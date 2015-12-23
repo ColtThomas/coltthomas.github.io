@@ -123,12 +123,11 @@ background: url("../images/home.jpg") no-repeat center center fixed;
   }
 
   .featureContainer {
-      position: absolute;
-      width: 80%;
       height: 30%;
       left: auto;
       right: auto;
       top: 60%;
+      margin: 3% 0;
   }
   
   .feature-box {
@@ -196,6 +195,23 @@ background: url("../images/home.jpg") no-repeat center center fixed;
      float: left;
   } 
   
+  #more {
+    text-align: center;
+    color: #FFF4E6;
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: default;
+    width: 10%;
+  }
+  
+  #more:hover {
+      color: blue;
+  }
+  
+  #more:active {
+      color: yellow;
+  }
   @media only screen and  (min-width: 150px) and (max-width: 960px) {
       .profileBox {
           width: 100%;

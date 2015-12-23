@@ -16,5 +16,13 @@ $(document).ready(function () {
         $(this).children(".description").fadeOut(1);
         $(this).children(".description-background").fadeOut(1);
     });
+    
+    //Add the array of project names to automatically populate
+//    var projectsArray = 
+    $("#more").click(function(){
+       $(this).hide();
+       $("#extra").show();
+       
+    });
 
 });
