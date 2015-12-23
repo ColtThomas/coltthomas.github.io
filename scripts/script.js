@@ -5,13 +5,12 @@ $(document).ready(function () {
     $(".feature-box .description-background").hide();
     
     $(".feature-box").hover(function(){
-        console.log("hover in");
         $(this).children(".title").fadeOut(1);
         $(this).children(".description").fadeIn(1);
         $(this).children(".description-background").fadeIn(1);
 
     }, function(){
-        console.log("hover out");
+        
         $(this).children(".title").fadeIn(1);
         $(this).children(".description").fadeOut(1);
         $(this).children(".description-background").fadeOut(1);
@@ -22,7 +21,12 @@ $(document).ready(function () {
     $("#more").click(function(){
        $(this).hide();
        $("#extra").show();
-       
+    });
+    
+    $(".feature-box").click(function(){
+        var page = $(this).attr("id");
+        console.log(page);
+       window.location.href = "projects/articles/"+ page + ".html"; 
     });
 
 });
