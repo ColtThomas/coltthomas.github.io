@@ -141,6 +141,9 @@ background: url("../images/home.jpg") no-repeat center center fixed;
     background-color: #1478DB;
   }
   
+  .feature-box:hover{
+      background-color:#4096ED;
+  }
   .feature-box img {
       height: 100%;
       width: 100%;
@@ -155,10 +158,10 @@ background: url("../images/home.jpg") no-repeat center center fixed;
   
   .title , .description, .description-background{
       color: #fff;
-      top: 5%;
-      bottom: 5%;
-      left: 5%;
-      right: 5%;
+      top: 10%;
+      bottom: 10%;
+      left: 10%;
+      right: 10%;
       position: absolute;
       text-align: center;
       margin: auto;

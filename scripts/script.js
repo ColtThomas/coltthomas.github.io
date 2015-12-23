@@ -6,15 +6,15 @@ $(document).ready(function () {
     
     $(".feature-box").hover(function(){
         console.log("hover in");
-        $(this).children(".title").fadeOut(50);
-        $(this).children(".description").fadeIn(50);
-        $(this).children(".description-background").fadeIn(50);
+        $(this).children(".title").fadeOut(1);
+        $(this).children(".description").fadeIn(1);
+        $(this).children(".description-background").fadeIn(1);
 
     }, function(){
         console.log("hover out");
-        $(this).children(".title").fadeIn(50);
-        $(this).children(".description").fadeOut(50);
-        $(this).children(".description-background").fadeOut(50);
+        $(this).children(".title").fadeIn(1);
+        $(this).children(".description").fadeOut(1);
+        $(this).children(".description-background").fadeOut(1);
     });
 
 });
