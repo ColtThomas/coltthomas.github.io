@@ -18,3 +18,7 @@ pass our samples though.  Each filter was centered at one of the 10
 player frequencies.  This allowed us to continuously compute the 
 power of the output of each filter.  The IIR filter outputing the
 highest power indicated a hit from the respective player.
+
+// - Additional information
+
+Check out the class wiki at "http://ece390web.groups.et.byu.net/dokuwiki/doku.php?id=start" for additional information.
