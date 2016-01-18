@@ -28,5 +28,12 @@ $(document).ready(function () {
         console.log(page);
        window.location.href = "projects/articles/"+ page + ".html"; 
     });
+    
+    $(".sideIcon").click(function(){
+        var page = $(this).attr("id");
+        console.log(page);
+       window.location.href = "../../projects/articles/"+ page + ".html"; 
+    });
+    
 
 });
