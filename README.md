@@ -1,17 +1,17 @@
 # cmthomas000.github.io
 
 
-This repository is a portfolio showing some samples of work I have done both in school and on my own.  It is currently being updated.  Below is an outline of some of the files included:
+This repository is where I store my school and small personal projects for reference.  It will be updated over time as I continue through school.  Below is an outline of some of the files included:
 
 /**********************
     Portfolio HTML 
 **********************/
 
-View the portfolio here - cmthomas000.github.io/index.html
+Visual documentation and presentation can be found using this link. - cmthomas000.github.io/index.html
 
-/***************
+/**********************
     Projects 
-***************/
+**********************/
 
 All projects and sample code can be found in the /projects directory:
 
