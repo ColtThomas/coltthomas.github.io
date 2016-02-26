@@ -54,6 +54,8 @@ end rx;
 
 architecture Behavioral of rx is
 	--FSM signals and stuff
+	-- Consider having a state that is active for only one clk cycle that outputs the sample_flag as 
+	-- a moore output, rather than figuring out the mealy output
 	type state_type is
 		(power_up,idle,start,prime,data,stop);
 	signal state_reg, state_next: state_type := power_up;
