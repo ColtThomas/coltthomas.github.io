@@ -1,22 +1,4 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    15:27:46 02/26/2016 
--- Design Name: 
--- Module Name:    pipeline_xor - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
+-- Homework prob 9.15 --
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
