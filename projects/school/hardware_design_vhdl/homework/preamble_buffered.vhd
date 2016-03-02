@@ -48,12 +48,14 @@ architecture Behavioral of preamble is
 	
 	signal v: unsigned(3 downto 0) := to_unsigned(7,4);
 	signal v_next: unsigned(3 downto 0);
+	signal output_buf_reg,output_buf_next: std_logic;
 begin
 	-- state register
 	process(clk)
 	begin
 		if (clk'event and clk='1') then
 			state_reg <= state_next;
+			output_buf_reg <= output_buf_next;
 		end if;
 	end process;
 	
@@ -82,7 +84,9 @@ begin
 		end case;
 	end process;
 	-- Moore output
-	data_out <= '1' when state_reg=one else
+	output_buf_next <= '1' when state_reg=one else
 					'0';
+	data_out <= output_buf_reg;				
+	
 end Behavioral;
 
