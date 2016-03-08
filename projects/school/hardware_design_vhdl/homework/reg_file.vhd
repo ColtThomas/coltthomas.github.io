@@ -23,8 +23,8 @@ entity reg_file is
 end reg_file;
 
 architecture prob of reg_file is
-	constant W: natural:=2;
-	constant B: natural:=16;
+	constant W: natural:=11;
+	constant B: natural:=8;
 	type reg_file_type is array (2**W-1 downto 0) of
 		std_logic_vector(B-1 downto 0);
 	signal array_reg:reg_file_type;
