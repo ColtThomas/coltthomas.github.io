@@ -8,7 +8,17 @@ function [decoder_output,survivor_state,cumulated_metric]=viterbi(G,k,channel_ou
     % metric(x,y) and can be specified to accomodate hard and soft
     % decision. This algorithm minimizes the metric rather than maximizing
     % the likelihood.
-    
+   
+   % SAMPLE INPUT:
+   % G = [1,0,1;1,1,1]
+   % k = 1
+   % channel_input = [0 1 1 0 1 1 1 1 0 1 0 0 0 1]
+   % OUTPUT:
+   % decoder_output = [1 1 0 0 0] - This represents the trellis path direction from the zero state
+   % survivor_state = [[0,0,0,1,1,0,0,0];[0,0,2,3,2,2,2,0];[0,0,0,0,0,0,0,0];[0,0,2,3,2,3,0,0]] - each row represents a state and each column a stage in the trellis.
+   %    The integer represents the connecting state from the previous stage
+   % cumulated_metric = Tells you how many incorrect bits were received
+   
     n=size(G,1);
     
     %check the sizes
