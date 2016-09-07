@@ -1,3 +1,10 @@
+/*
+* Lab 1 - Fibonacci Lab
+* Class - ECEN 427
+* Lab Partners - Colt Thomas, Dallen Ford
+*/
+
+
 #include <stdio.h>
 #include "platform.h"
 
