@@ -8,6 +8,7 @@ This repository is where I store my school and small personal projects for refer
 **********************/
 
 Visual documentation and presentation can be found using this link. - cmthomas000.github.io/index.html
+This was done as practice for HTML and Javascript
 
 /**********************
     Projects 
