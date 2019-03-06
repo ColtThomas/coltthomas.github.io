@@ -19,10 +19,10 @@
 -Xilinx Nexys2 Development Board
 
 ## Notes for the 3008 ADC
--Vdd: Power supply. set to 5V
--Vref: Max imput voltage to ADC. Set to 5V for audio
--Fsample: 200 ksps
--Fclock: 18*Fsample
+- Vdd: Power supply. set to 5V
+- Vref: Max imput voltage to ADC. Set to 5V for audio
+- Fsample: 200 ksps
+- Fclock: 18*Fsample
 
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
