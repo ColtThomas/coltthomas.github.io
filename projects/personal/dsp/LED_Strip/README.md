@@ -1,20 +1,20 @@
 # LED Strip Oscillator
 
-Description: Adds a lightshow to your beats. Input your favorite beats as audio to the system to get LEDs that oscillate with the bass
+**Description:** Adds a lightshow to your beats. Input your favorite beats as audio to the system to get LEDs that oscillate with the bass
 
-Status: Incomplete. A verilog module was created to receive the individual samples, and test files were created. 
+**Status:** Incomplete. A verilog module was created to receive the individual samples, and test files were created. 
 
-In Progress:
+**In Progress:**
 - Sample receiver - Runs fine with virtual simulation; will verify implementation on FPGA
 
-TODO:
+**TODO:**
 - Create buffer to store samples
 - Create a high level controller to initiate DSP operations and manage incoming samples
 - Basic FIR filter for noise
 - LED volume meter (for testing)
 - System level design for LED strip oscillation
 
-Equipment:
+**Equipment:**
 -Adafruit MCP3008
 -Xilinx Nexys2 Development Board
 
