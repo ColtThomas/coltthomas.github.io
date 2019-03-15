@@ -20,17 +20,40 @@
 # cin >> $t0
 
 # Task 3 - Use the decoding information for the FAT filesystem to convert this hexadecimal value to a string representation of the date for the file table entry. 
+
 # Convert to big-endian
+#$s4 = loadbyte(0x00,0) // load the first byte with zeros
+#$s4 = loadbyte(0x00,0) // load the second byte with zeros
+#$s4 = loadbyte($t0,0) // load the third byte with first byte given by user
+#$s4 = loadbyte($t0,0) // load the fourth byte with second byte given by user
+
 # Decode the month, day and year
+#$s0 = readhex($s4) // get the integer value of input hex string
+#$t1 = 0xFE00 // Mask for the date
+#$s1 = $s0 & $t1 // Get the year
+
+#$t1 = 0x01E0 // Mask for the month
+#$s2 = $s0 & $t1 // Get the month (integer value)
+
+#$t1 = 0x001F // Mask for the day
+#$s3 = $s0 & $t1 // Get the day
 
 # Task 4 - Display the date corresponding to the hexadecimal value as a string
+# cout << "The date of the entered value is: " << $s2 << " " << $s3 << ", " << $s1
+
 # Task 5 - Print a farewell message and exit the program gracefully.
 # cout << "It is now safe to turn off your computer"
 ######################################################################
 # Register Usage:
 # $v0: Used for input and output of values
 # $a0: Used to pass addresses and values to syscalls
+# $s0: Saves the integer value of input hex value
+# $s1: Saved year
+# $s2: Saved month
+# $s3: Saved day
+# $s4: big-endian conversion
 # $t0: Stores user input Hex value
+# $t1: Temp register for bit masking
 ######################################################################
 	.data              # Data declaration section
 welcome1: .asciiz "\nProgram 3 - Bit Masking"
