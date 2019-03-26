@@ -8,6 +8,7 @@
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
 
 **TODO:**
+- Test PMOD Vdd/Ground pins to see if they are automatically enabled
 - Create buffer to store samples
 - Create a high level controller to initiate DSP operations and manage incoming samples
 - Basic FIR filter for noise 
@@ -24,6 +25,8 @@
 - Fsample: 200 ksps
 - Fclock: 18*Fsample
 
+## Notes for the Nexys 2 board
+- It looks like the PMOD connectors have the ground and Vdd constantly enabled. Check to see what each pin is configured as.
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
 calculated quantity of voltage. E.G. for 5Vref, 1 bit represents 0.00488V. A smaller Vref gives higher precision, but a lower Vmax for a 
