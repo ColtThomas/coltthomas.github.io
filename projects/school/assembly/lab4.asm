@@ -31,6 +31,7 @@
 # $t0 = readhex($t0) // Takes the input chars and converts hex-like input to integer value
 # 
 #    3a - Store the bit rate table as a 2-dimensional array
+# words = [...bitrate index...]	// will be defined in data segment
 #    3b - Extract the MP3 Version, Layer, and Bit-Rate Index from the entered MP# header
 # $s0 = $t0 & 0x00180000 // bit mask for the MPEG version
 # $s1 = $t0 & 0x00060000 // bit mask for the Layer
@@ -56,11 +57,25 @@ prompt:  .asciiz "\nEnter the MP3 header: "
 mesg1:	.asciiz "\nThe entered value in decimal is: "
 mesg2:  .asciiz "\n\n"
 
-
+debug: .asciiz "\nDebug result: "
 #array example for bit rates
-rates: .words 0,0,0,0,0,
-              32,32,32,32,8
-              64,48,40,48,16, #... etc
+rates: .word 0,0,0,0,0,	# 0 represents a FREE bitrate index
+              4,4,4,4,1,
+              8,6,5,6,2,
+              12,7,6,7,3,
+              16,8,7,8,4,
+              20,10,8,10,5,
+              24,12,10,12,6,
+              28,14,12,14,7,
+              32,16,14,16,8,
+              36,20,16,18,10,
+              40,24,20,20,12,
+              44,28,24,22,14,
+              48,32,28,24,16,
+              52,40,32,28,18,
+              56,48,40,32,20
+              64,64,64,64,64	# 64 represents a BAD bitrate index
+
 
 	.text              # Executable code follows
 main:
@@ -75,7 +90,7 @@ main:
 	la $a0, description     # We will display the description
 	syscall
 
-# 2 - Prompt the user to enter the hexadecimal value of an MP3 file header	
+# Part 2 - Prompt the user to enter the hexadecimal value of an MP3 file header	
 	li $v0, 4          # Syscall to print a string
 	la $a0, prompt     # We will display the prompt
 	syscall
@@ -94,8 +109,20 @@ main:
 	la $a0, mesg2      
         syscall
 
-	
+# Part 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
 
+# TODO: fix mask
+	srl $s0, $t0, 19 # shift left by 16 bits in preparation for bit mask
+	andi $s0, $s0, 3 # Masks
+
+	li $v0, 4          # Get ready to label result
+	la $a0, debug
+        syscall
+        
+        li $v0, 1
+        move $a0, $s0
+        syscall
+        
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
 
