@@ -56,6 +56,12 @@ prompt:  .asciiz "\nEnter the MP3 header: "
 mesg1:	.asciiz "\nThe entered value in decimal is: "
 mesg2:  .asciiz "\n\n"
 
+
+#array example for bit rates
+rates: .words 0,0,0,0,0,
+              32,32,32,32,8
+              64,48,40,48,16, #... etc
+
 	.text              # Executable code follows
 main:
 # Include your code here
