@@ -1,5 +1,5 @@
 #####################################################################
-# Program #3: lab4.asm     Programmer: Colt Thomas
+# Program #4: lab4.asm     Programmer: Colt Thomas
 # Due Date: <Due Date>    Course: CS2810
 # Date Last Modified: <Date of Last Modification>
 #####################################################################
@@ -28,17 +28,25 @@
 # $t0 << cin
 # 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
 # the MP3 file. 
+# $t0 = readhex($t0) // Takes the input chars and converts hex-like input to integer value
+# 
 #    3a - Store the bit rate table as a 2-dimensional array
 #    3b - Extract the MP3 Version, Layer, and Bit-Rate Index from the entered MP# header
+# $s0 = $t0 & 0x00180000 // bit mask for the MPEG version
+# $s1 = $t0 & 0x00060000 // bit mask for the Layer
+# $s2 = $t0 & 0x00 // bit mask for the Bit-Rate Index
+# 
+#
+#
 #    3c - Retrieve the appropriate value from the array based on the extracted values
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
 # 5 - Print a farewell message and exit the program gracefully.
 ######################################################################
 # Register Usage:
 # $v0: Used for input and output of values
-# $t0: Used to store user input MP3 Hex value
+# $t0: Used to store user input MP3 Hex value (both pre and post hex conversion)
 # $a0: Used to pass addresses and values to syscalls
-#     
+# $s0: Integer representation of the MP3 header   
 ######################################################################
 	.data              # Data declaration section
 # Entries here are <label>:  <type>   <value>
@@ -68,6 +76,7 @@ main:
 	
 	jal readhex        # call the subroutine to read a hex integer
 	
+	# Displays the $t0 value (user input hex to int value)
 	move $t0, $v0      # Save the result of reading a hex
 	li $v0, 4          # Get ready to label result
 	la $a0, mesg1      
@@ -78,6 +87,8 @@ main:
 	li $v0, 4          # Get ready to label result
 	la $a0, mesg2      
         syscall
+
+	
 
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
