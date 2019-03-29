@@ -42,9 +42,9 @@
 # $s1 = $t0 & 0x3 // bit mask for the Layer
 # $s2 = $t0 & 0xf // bit mask for the Bit-Rate Index
 # 
-#
-#
 #    3c - Retrieve the appropriate value from the array based on the extracted values
+# $s1 = $s1 ^ 0xFF // XOR to invert
+# version = ["Layer 3","Layer 2", "Layer 1"]
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
 # 5 - Print a farewell message and exit the program gracefully.
 ######################################################################
@@ -80,7 +80,8 @@ rates: .word 0,0,0,0,0,	# 0 represents a FREE bitrate index
               52,40,32,28,18,
               56,48,40,32,20
               64,64,64,64,64	# 64 represents a BAD bitrate index
-
+                   01234567890123456789012
+versions: .asciiz "Layer 3 Layer 2 Layer 1"
 
 	.text              # Executable code follows
 main:
