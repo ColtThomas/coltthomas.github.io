@@ -32,10 +32,15 @@
 # 
 #    3a - Store the bit rate table as a 2-dimensional array
 # words = [...bitrate index...]	// will be defined in data segment
+
 #    3b - Extract the MP3 Version, Layer, and Bit-Rate Index from the entered MP# header
-# $s0 = $t0 & 0x00180000 // bit mask for the MPEG version
-# $s1 = $t0 & 0x00060000 // bit mask for the Layer
-# $s2 = $t0 & 0x00 // bit mask for the Bit-Rate Index
+#
+# $s0 = $t0 >> 19 // Obtain the MPEG Audio Version
+# $s1 = $t0 >> 17 // Obtain the Layer description 
+# $s2 = $t0 >> 12 // Obtain the Bitrate Index
+# $s0 = $t0 & 0x3 // bit mask for the MPEG version
+# $s1 = $t0 & 0x3 // bit mask for the Layer
+# $s2 = $t0 & 0xf // bit mask for the Bit-Rate Index
 # 
 #
 #
@@ -111,16 +116,40 @@ main:
 
 # Part 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
 
-# TODO: fix mask
-	srl $s0, $t0, 19 # shift left by 16 bits in preparation for bit mask
-	andi $s0, $s0, 3 # Masks
+	# -------------- MP3 header format -----------------
+	#	AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM
+	# A - Frame Sync
+	# B - MPEG Audio Version ID
+	# C - Layer Description
+	# D - Protection Bit
+	# E - Bitrate Index
+	# F - Sampling Rate Frequency Index
+	# G - Padding Bit
+	# H - Private Bit
+	# I - Channel Mode
+	# J - Mode Extension
+	# K - Copyright
+	# L - Original
+	# M - Emphasis
+	# ---------------------------------------------------
+
+	# shift right by 16 bits in preparation for bit mask
+	srl $s0, $t0, 19 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 00000000 000AAAAA AAAAAABB
+	srl $s1, $t0, 17 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 00000000 0AAAAAAA AAAABBCC 
+	srl $s2, $t0, 12 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 0000AAAA AAAAAAAB BCCDEEEE 
+
+	andi $s0, $s0, 3 # Bit mask for the MPEG Audio Version
+	andi $s1, $s1, 3 # Bit mask for the Layer Description
+	andi $s2, $s2, 15 # Bit mask for the Bitrate Index
+	
+	
 
 	li $v0, 4          # Get ready to label result
 	la $a0, debug
         syscall
         
         li $v0, 1
-        move $a0, $s0
+        move $a0, $s2
         syscall
         
 	li    $v0, 10          # terminate program run and
