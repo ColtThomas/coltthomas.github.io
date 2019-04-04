@@ -1,7 +1,7 @@
 #####################################################################
 # Program #4: lab4.asm     Programmer: Colt Thomas
-# Due Date: <Due Date>    Course: CS2810
-# Date Last Modified: <Date of Last Modification>
+# Due Date: 4/9/19         Course: CS2810
+# Date Last Modified: 4/3
 #####################################################################
 # Functional Description:
 # This program will prompt the user for a hexadecimal value MP3
@@ -80,9 +80,9 @@ rates: .word 0,0,0,0,0,	# 0 represents a FREE bitrate index
               52,40,32,28,18,
               56,48,40,32,20
               64,64,64,64,64	# 64 represents a BAD bitrate index
-                   01234567890123456789012
+          #         01234567890123456789012
 versions: .asciiz "Layer 3 Layer 2 Layer 1"
-
+result: .asciiz "\nResult: "
 	.text              # Executable code follows
 main:
 # Include your code here
@@ -144,15 +144,39 @@ main:
 	andi $s2, $s2, 15 # Bit mask for the Bitrate Index
 	
 	
-
-	li $v0, 4          # Get ready to label result
+	#------------------Debug-----------------------------
+	li $v0, 4          
 	la $a0, debug
         syscall
         
         li $v0, 1
         move $a0, $s2
         syscall
-        
+	#------------------Debug-----------------------------
+             
+# 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
+	li $v0, 4          # Get ready to label result
+	la $a0, result
+        syscall
+	
+	li $v0 1
+	la $t1, rates
+	lw $a0, 20($t1) 	# byte addressible memory
+	syscall
+	#li $v0 1
+	addi $t1, $t1, 20	# increment the array access
+	lw $a0, 20($t1) 	# byte addressible memory
+	syscall
+	
+        #li $v0, 11          	# print char syscall
+	#la $a1, month		# store our month string to $a1
+	#add $a1, $a1, $s2 	# print first char of the month    
+	#lbu $a0, ($a1)		# load our first byte into the $a0 register as argument
+	#syscall                     
+	#addi $a1, $a1, 1 	# print second char of the month by incrementing our index    
+	#lbu $a0, ($a1)
+	#syscall               
+                             
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
 
