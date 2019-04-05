@@ -1,7 +1,7 @@
 #####################################################################
 # Program #4: lab4.asm     Programmer: Colt Thomas
 # Due Date: 4/9/19         Course: CS2810
-# Date Last Modified: 4/3
+# Date Last Modified: 4/5
 #####################################################################
 # Functional Description:
 # This program will prompt the user for a hexadecimal value MP3
@@ -62,10 +62,18 @@
 #
 # $s2 = 24*$s2 // To iterate down columns, multiply the index by 24
 # $s3 = $s3 + $s2 // Create the final bitrate index access value
-# 
+# rates[$s3] << 3 // Shift left by 3 to multiply by 8. The entire array was divided by 8 to save memory.
 # version = ["Layer 3","Layer 2", "Layer 1"]
+#
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
+# cout << "MPEG Version " << $s2 << endl;
+# cout << "Layer " << layer[$s1] << endl;
+# cout << "Bit Rate: " << rates[$s3] << endl; 
+#
+#
+#
 # 5 - Print a farewell message and exit the program gracefully.
+# cout << "\n\nEnd of Program\n"
 ######################################################################
 # Register Usage:
 # $v0: Used for input and output of values
@@ -89,6 +97,7 @@ debug: .asciiz "\nDebug result: "
 
 # Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
 # is valid for both layer 2 and layer 3. Makes for easier indexing (+24 to go down coulmn by 1, +4 to increment row)
+# NOTE: Values divided by 8 to save memory
 rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
               4,4,4,4,1,1,
               8,6,5,6,2,2,
@@ -109,7 +118,14 @@ rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
 versions: .asciiz "Layer 3 Layer 2 Layer 1"
 result: .asciiz "\nResult: "
 comma: .asciiz ","
-newline: .asciiz "\n"
+
+free: .asciiz "Free\n"
+bad: .asciiz "Bad\n"
+
+versionTxt: .asciiz "\nMPEG Version "
+layerTxt: .asciiz "\nLayer "
+rateTxt: .asciiz "\nBit Rate: "
+bye: .asciiz "\n\nEnd of Program\n"
 	.text              # Executable code follows
 main:
 # Include your code here
@@ -203,12 +219,13 @@ main:
 	
 
 	# Print the entire array $t7 as increment
-	li $t7, 0	# initiate incrementer
-	li $v0 1	# syscall param for displaying integer
-	la $t1, rates
-	add $t1, $t1, $s3	# increment to proper bitrate index address
-	lw $a0, 0($t1) 	# byte addressible memory
-	syscall
+	#li $t7, 0	# initiate incrementer
+	#li $v0 1	# syscall param for displaying integer
+	#la $t1, rates
+	#add $t1, $t1, $s3	# increment to proper bitrate index address
+	#lw $a0, 0($t1) 	# byte addressible memory
+	#sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
+	#syscall
 	#------------------Debug-----------------------------
 #while: 
 #	bge $t7, 60, endloop
@@ -227,7 +244,44 @@ main:
 
 
 	#------------------Debug-----------------------------
-                             
+         
+# 5 - Print a farewell message and exit the program gracefully.
+        
+	li $v0, 4          # Syscall to print a string
+	la $a0, versionTxt     # We will display the MP3 version
+	syscall                     
+	                                                     
+	li $v0, 4          # Syscall to print a string
+	la $a0, layerTxt     # We will display the MP3 layer
+	syscall
+	
+	                     
+	li $v0, 4          # Syscall to print a string
+	la $a0, rateTxt     # We will display the MP3 bitrate
+	syscall                     
+
+                
+      	# Print the Bitrate value (or string)
+	la $t1, rates
+	add $t1, $t1, $s3	# increment to proper bitrate index address
+	lw $a0, 0($t1) 	# byte addressible memory
+	sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
+	# check for free or bad bitrate
+	li $v0 4	# print a string instead if free bit
+	li $t1, 512	# represents a BAD Bitrate
+	bge $a0,$t1,badbit	# check for bitrate >= 512 (or 8*64)
+	beqz  $a0, freebit	# check for bitrate of 0
+	li $v0 1	# otherwise print integer
+	j printInt
+freebit:
+	la $a0, free	#print FREE
+	j printInt
+badbit:	
+	la $a0, bad	#print BAD
+printInt:
+	syscall                    
+                                                                     
+                                                                                                                                                                               
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
 
