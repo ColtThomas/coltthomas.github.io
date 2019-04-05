@@ -43,7 +43,26 @@
 # $s2 = $t0 & 0xf // bit mask for the Bit-Rate Index
 # 
 #    3c - Retrieve the appropriate value from the array based on the extracted values
-# $s1 = $s1 ^ 0xFF // XOR to invert
+#
+# Array index prep
+# $s0 = ~$s0 // Invert version bits (only care about last bit; 11 is Version 1, 10/00 is Versions 2/2.5.)
+# $s1 = ~$s1 // Invert the layer
+# $s0 = $s0 & 0x3 // mask for the two bits we want
+# $s1 = $s1 & 0x3 // mask for the two bits we want
+# $s3 = $s0	// $s3 will combine the version and layer bits to make array index
+# $s3 << 2	// make room for layer bits
+# $s3 = $s3 & $s1 // concatenate layer bits onto index register
+# $s3 << 2	// multiply value by 4 (shift left 2) to increment along the row of our 2d array
+#
+# Index prep results in the following increment
+# 1111 -> 0000 Version 1 Layer 1
+# 1110 -> 0001 Version 1 Layer 2
+# etc...
+# X010 -> 0101 Version 2/2.5 Layer 2
+#
+# $s2 = 24*$s2 // To iterate down columns, multiply the index by 24
+# $s3 = $s3 + $s2 // Create the final bitrate index access value
+# 
 # version = ["Layer 3","Layer 2", "Layer 1"]
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
 # 5 - Print a farewell message and exit the program gracefully.
@@ -51,8 +70,12 @@
 # Register Usage:
 # $v0: Used for input and output of values
 # $t0: Used to store user input MP3 Hex value (both pre and post hex conversion)
+# $t1: General purpose register used for incrementing
 # $a0: Used to pass addresses and values to syscalls
 # $s0: Integer representation of the MP3 header   
+# $s1: Stores the bits representing the MP3 Layer
+# $s2: Stores the bits representing the MP Version
+# $s3: Used to access bitrate index array value 
 ######################################################################
 	.data              # Data declaration section
 # Entries here are <label>:  <type>   <value>
@@ -63,26 +86,30 @@ mesg1:	.asciiz "\nThe entered value in decimal is: "
 mesg2:  .asciiz "\n\n"
 
 debug: .asciiz "\nDebug result: "
-#array example for bit rates
-rates: .word 0,0,0,0,0,	# 0 represents a FREE bitrate index
-              4,4,4,4,1,
-              8,6,5,6,2,
-              12,7,6,7,3,
-              16,8,7,8,4,
-              20,10,8,10,5,
-              24,12,10,12,6,
-              28,14,12,14,7,
-              32,16,14,16,8,
-              36,20,16,18,10,
-              40,24,20,20,12,
-              44,28,24,22,14,
-              48,32,28,24,16,
-              52,40,32,28,18,
-              56,48,40,32,20
-              64,64,64,64,64	# 64 represents a BAD bitrate index
+
+# Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
+# is valid for both layer 2 and layer 3. Makes for easier indexing (+24 to go down coulmn by 1, +4 to increment row)
+rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
+              4,4,4,4,1,1,
+              8,6,5,6,2,2,
+              12,7,6,7,3,3,
+              16,8,7,8,4,4,
+              20,10,8,10,5,5,
+              24,12,10,12,6,6,
+              28,14,12,14,7,7,
+              32,16,14,16,8,8,
+              36,20,16,18,10,10,
+              40,24,20,20,12,12,
+              44,28,24,22,14,14,
+              48,32,28,24,16,16,
+              52,40,32,28,18,18,
+              56,48,40,32,20,20,
+              64,64,64,64,64,64	# 64 represents a BAD bitrate index
           #         01234567890123456789012
 versions: .asciiz "Layer 3 Layer 2 Layer 1"
 result: .asciiz "\nResult: "
+comma: .asciiz ","
+newline: .asciiz "\n"
 	.text              # Executable code follows
 main:
 # Include your code here
@@ -145,13 +172,13 @@ main:
 	
 	
 	#------------------Debug-----------------------------
-	li $v0, 4          
-	la $a0, debug
-        syscall
+	#li $v0, 4          
+	#la $a0, debug
+        #syscall
         
-        li $v0, 1
-        move $a0, $s2
-        syscall
+        #li $v0, 1
+        #move $a0, $s2
+        #syscall
 	#------------------Debug-----------------------------
              
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
@@ -159,23 +186,47 @@ main:
 	la $a0, result
         syscall
 	
-	li $v0 1
-	la $t1, rates
-	lw $a0, 20($t1) 	# byte addressible memory
-	syscall
-	#li $v0 1
-	addi $t1, $t1, 20	# increment the array access
-	lw $a0, 20($t1) 	# byte addressible memory
-	syscall
+	# Prepare array index value
+	nor $s0, $s0, $s0	# NAND = NOR(AND(value))
+	nor $s1, $s1, $s1	# Invert the layer bits with NOR
+	andi $s0, $s0, 3	# bitmask for last two bits
+	andi $s1, $s1, 3 	# bitmask for last two bits
+	move $s3, $s0		# $s3 will combine the version and layer bits to make array index
+	sll $s3, $s3, 2		# shifting 2 to make room for layer bits
+	or $s3, $s3, $s1	# merge the layer bits onto index register
+	sll $s3, $s3, 2		# multiply value by 4 to increment along the row of our 2d array
+	li $t1, 24		# column incrementer multiply value
+	mult $s2, $t1		# multiply bitrate index by 24 to increment down the "columns" of our "2d array"
+	mflo $s2
+	add $s3, $s3, $s2	# combine registers to get the end result bitrate index value
 	
-        #li $v0, 11          	# print char syscall
-	#la $a1, month		# store our month string to $a1
-	#add $a1, $a1, $s2 	# print first char of the month    
-	#lbu $a0, ($a1)		# load our first byte into the $a0 register as argument
-	#syscall                     
-	#addi $a1, $a1, 1 	# print second char of the month by incrementing our index    
-	#lbu $a0, ($a1)
-	#syscall               
+	
+
+	# Print the entire array $t7 as increment
+	li $t7, 0	# initiate incrementer
+	li $v0 1	# syscall param for displaying integer
+	la $t1, rates
+	add $t1, $t1, $s3	# increment to proper bitrate index address
+	lw $a0, 0($t1) 	# byte addressible memory
+	syscall
+	#------------------Debug-----------------------------
+#while: 
+#	bge $t7, 60, endloop
+#	addi $t7, $t7, 1	# increment
+#	li $v0, 4	# print comma separator
+#	la $a0, comma
+#	syscall
+#	
+#	li $v0 1
+#	addi $t1, $t1, 4	# increment the array access
+#	lw $a0, 0($t1) 	# byte addressible memory
+#	syscall
+#	j while
+#endloop:	
+
+
+
+	#------------------Debug-----------------------------
                              
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
