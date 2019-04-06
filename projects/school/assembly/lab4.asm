@@ -1,5 +1,6 @@
 #####################################################################
 # Program #4: lab4.asm     Programmer: Colt Thomas
+# DERPAAGDSJASDG
 # Due Date: 4/9/19         Course: CS2810
 # Date Last Modified: 4/5
 #####################################################################
@@ -20,6 +21,10 @@
 # 5 - Print a farewell message and exit the program gracefully.
 #####################################################################
 # Pseudocode:
+# // Arrays
+# version = ["Layer 3","Layer 2", "Layer 1"]
+# rates = [0,0,0 ... 64,64] // This will store a bitrate index array (with values divided by 8)
+#
 # 1 - Print a welcome message that include: your name, a title, and a brief description of the program.
 # cout << "CS2810 - Colt Thomas - Program 4" << endl
 # cout << "This program decodes the 32-bit MP3 header file to show the version, layer and bit rate to the user"
@@ -63,7 +68,7 @@
 # $s2 = 24*$s2 // To iterate down columns, multiply the index by 24
 # $s3 = $s3 + $s2 // Create the final bitrate index access value
 # rates[$s3] << 3 // Shift left by 3 to multiply by 8. The entire array was divided by 8 to save memory.
-# version = ["Layer 3","Layer 2", "Layer 1"]
+
 #
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
 # cout << "MPEG Version " << $s2 << endl;
@@ -89,10 +94,7 @@
 # Entries here are <label>:  <type>   <value>
 welcome: .asciiz "\nCS2810 - Colt Thomas - Program 4"
 description: .asciiz "\nThis program decodes the 32-bit MP3 header file to show the version, layer and bit rate to the user"
-prompt:  .asciiz "\nEnter the MP3 header: "
-mesg1:	.asciiz "\nThe entered value in decimal is: "
-mesg2:  .asciiz "\n\n"
-
+prompt:  .asciiz "\n\nEnter the MP3 header: "
 debug: .asciiz "\nDebug result: "
 
 # Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
@@ -114,16 +116,21 @@ rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
               52,40,32,28,18,18,
               56,48,40,32,20,20,
               64,64,64,64,64,64	# 64 represents a BAD bitrate index
-          #         01234567890123456789012
-versions: .asciiz "Layer 3 Layer 2 Layer 1"
+
 result: .asciiz "\nResult: "
-comma: .asciiz ","
+#comma: .asciiz ","
 
 free: .asciiz "Free\n"
 bad: .asciiz "Bad\n"
 
 versionTxt: .asciiz "\nMPEG Version "
+version:  	.asciiz "1"
+		.asciiz "2"
+		.asciiz "2.5"
 layerTxt: .asciiz "\nLayer "
+layer:	.asciiz "I"
+	.asciiz "II"
+	.asciiz "III"
 rateTxt: .asciiz "\nBit Rate: "
 bye: .asciiz "\n\nEnd of Program\n"
 	.text              # Executable code follows
@@ -148,15 +155,15 @@ main:
 	
 	# Displays the $t0 value (user input hex to int value)
 	move $t0, $v0      # Save the result of reading a hex
-	li $v0, 4          # Get ready to label result
-	la $a0, mesg1      
-        syscall
-        li $v0, 1
-        move $a0, $t0
-        syscall
-	li $v0, 4          # Get ready to label result
-	la $a0, mesg2      
-        syscall
+	#li $v0, 4          # Get ready to label result
+	#la $a0, mesg1      
+        #syscall
+        #li $v0, 1
+        #move $a0, $t0
+        #syscall
+	#li $v0, 4          # Get ready to label result
+	#la $a0, mesg2      
+        #syscall
 
 # Part 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
 
@@ -198,12 +205,9 @@ main:
 	#------------------Debug-----------------------------
              
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
-	li $v0, 4          # Get ready to label result
-	la $a0, result
-        syscall
 	
 	# Prepare array index value
-	nor $s0, $s0, $s0	# NAND = NOR(AND(value))
+	nor $s0, $s0, $s0	# Invert the version bits with NOR
 	nor $s1, $s1, $s1	# Invert the layer bits with NOR
 	andi $s0, $s0, 3	# bitmask for last two bits
 	andi $s1, $s1, 3 	# bitmask for last two bits
@@ -213,48 +217,33 @@ main:
 	sll $s3, $s3, 2		# multiply value by 4 to increment along the row of our 2d array
 	li $t1, 24		# column incrementer multiply value
 	mult $s2, $t1		# multiply bitrate index by 24 to increment down the "columns" of our "2d array"
-	mflo $s2
+	mflo $s2		# result in lo
 	add $s3, $s3, $s2	# combine registers to get the end result bitrate index value
 	
 	
-
-	# Print the entire array $t7 as increment
-	#li $t7, 0	# initiate incrementer
-	#li $v0 1	# syscall param for displaying integer
-	#la $t1, rates
-	#add $t1, $t1, $s3	# increment to proper bitrate index address
-	#lw $a0, 0($t1) 	# byte addressible memory
-	#sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
-	#syscall
-	#------------------Debug-----------------------------
-#while: 
-#	bge $t7, 60, endloop
-#	addi $t7, $t7, 1	# increment
-#	li $v0, 4	# print comma separator
-#	la $a0, comma
-#	syscall
-#	
-#	li $v0 1
-#	addi $t1, $t1, 4	# increment the array access
-#	lw $a0, 0($t1) 	# byte addressible memory
-#	syscall
-#	j while
-#endloop:	
-
-
-
-	#------------------Debug-----------------------------
          
-# 5 - Print a farewell message and exit the program gracefully.
+
         
+        # Print the MP3 Version
 	li $v0, 4          # Syscall to print a string
 	la $a0, versionTxt     # We will display the MP3 version
 	syscall                     
-	                                                     
+	                       
+	li $v0, 4                                                    	
+	la $a0, version		# get the base address for the version strings
+	sll $t0, $s0, 1		# version array increments by 2 (half word); take the integer value from $s0
+	add $a0, $a0, $t0	# add the base address offset
+	syscall                                                                                   
+	                                                                                                                                               
 	li $v0, 4          # Syscall to print a string
 	la $a0, layerTxt     # We will display the MP3 layer
 	syscall
 	
+	li $v0, 4                                                    	
+	la $a0, layer		# get the base address for the Layer strings
+	sll $t0, $s1, 1		# layer array increments by 2 (half word); take the integer value from $s0
+	add $a0, $a0, $t0	# add the base address offset
+	syscall  
 	                     
 	li $v0, 4          # Syscall to print a string
 	la $a0, rateTxt     # We will display the MP3 bitrate
@@ -281,7 +270,12 @@ badbit:
 printInt:
 	syscall                    
                                                                      
-                                                                                                                                                                               
+ # 5 - Print a farewell message and exit the program gracefully.        
+ 
+ 	li $v0, 4       # Syscall to print a string
+	la $a0, bye    	# "bye" message
+	syscall  
+                                                                                                                                                                                                                                                                                                                                             
 	li    $v0, 10          # terminate program run and
 	syscall                # return control to system
 
@@ -327,3 +321,31 @@ hexend:	move $v0, $t0        # Set $v0 to the return value
 	lw   $t0, 4($sp)     # pop $t0 from the stack
 	addi $sp, $sp, 8     # free the stack by changing the stack pointer
 	jr   $ra             # Return to where called
+
+
+	# Print the entire array $t7 as increment
+	#li $t7, 0	# initiate incrementer
+	#li $v0 1	# syscall param for displaying integer
+	#la $t1, rates
+	#add $t1, $t1, $s3	# increment to proper bitrate index address
+	#lw $a0, 0($t1) 	# byte addressible memory
+	#sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
+	#syscall
+	#------------------Debug-----------------------------
+#while: 
+#	bge $t7, 60, endloop
+#	addi $t7, $t7, 1	# increment
+#	li $v0, 4	# print comma separator
+#	la $a0, comma
+#	syscall
+#	
+#	li $v0 1
+#	addi $t1, $t1, 4	# increment the array access
+#	lw $a0, 0($t1) 	# byte addressible memory
+#	syscall
+#	j while
+#endloop:	
+
+
+
+	#------------------Debug-----------------------------
