@@ -122,9 +122,22 @@ description:  .asciiz "\nThis program decodes the 32-bit MP3 header file to show
 prompt:       .asciiz "\n\nEnter the MP3 header: "
 debug:        .asciiz "\nDebug result: "
 
-# Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
-# is valid for both layer 2 and layer 3. Makes for easier indexing (+24 to go down coulmn by 1, +4 to increment row)
+# Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th and 7th column since the 5th column
+# (per original bitrate array) is valid for both layer 2 and layer 3. Makes for easier indexing (+28 to go down coulmn 
+# by 1, +4 to increment row)
 # NOTE: Values divided by 8 to save memory
+#
+# Row access method:
+# ABB - Version A, Layer B
+# A=0 -> Version 1, A=1 -> Version 2/2.5
+# BB -> subtract 1 for layer number
+# 
+# EG. 000 -> V1,L1
+#     001 -> V1,L2 
+#     010 -> V1,L3
+#     011 -> Invalid (hence column of 64)
+#   etc...
+#
 rates: .word  0 ,0 ,0 ,64,0 ,0 ,0 ,	# 0 represents a FREE bitrate index
               4 ,4 ,4 ,64,4 ,1 ,1 ,
               8 ,6 ,5 ,64,6 ,2 ,2 ,
@@ -146,8 +159,9 @@ bad:  .asciiz "Bad\n"
 
 # MP3 Version strings to display
 versionTxt: .asciiz "\nMPEG Version "
-version:    .asciiz "1"
+version:    .asciiz "1"	
 	    .asciiz "2"
+	    .asciiz " "	# reserved
 	    .asciiz "2.5"
 		
 # MP3 Layer strings to display
@@ -159,7 +173,6 @@ rateTxt:  .asciiz "\nBit Rate (kbps): "
 bye: 	  .asciiz "\n\nEnd of Program\n"
 
 
-result: .asciiz "\nResult: "
           .text              # Executable code follows
 main:
 
@@ -237,18 +250,6 @@ main:
 	mult $s2, $t1		# multiply bitrate index by 24 to increment down the "columns" of our "2d array"
 	mflo $s2		# result in lo
 	add $s3, $s3, $s2	# combine registers to get the end result bitrate index value
-        
-        #debug
-        li $v0, 4          	# Syscall to print a string
-	la $a0, result     	# We will display the MP3 version
-	syscall                     
-	
-	li $v0, 1
-	move $a0, $s3
-	syscall
-        
-        
-        #end debutg
         
         
         # Print the MP3 Version
