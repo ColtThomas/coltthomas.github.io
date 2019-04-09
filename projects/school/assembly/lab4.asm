@@ -166,8 +166,8 @@ version:    .asciiz "1"
 		
 # MP3 Layer strings to display
 layerTxt: .asciiz "\nLayer "
-layer:	  .asciiz "I"
-	  .asciiz "II"
+layer:	  .asciiz "I  "
+	  .asciiz "II "
 	  .asciiz "III"
 rateTxt:  .asciiz "\nBit Rate (kbps): "
 bye: 	  .asciiz "\n\nEnd of Program\n"
@@ -269,7 +269,7 @@ main:
 	
 	li $v0, 4                                                    	
 	la $a0, layer		# get the base address for the Layer strings
-	sll $t0, $s1, 1		# layer array increments by 2 (half word); take the integer value from $s0
+	sll $t0, $s1, 2		# layer array increments by 4 (word); take the integer value from $s0
 	add $a0, $a0, $t0	# add the base address offset
 	syscall  
 	                     
