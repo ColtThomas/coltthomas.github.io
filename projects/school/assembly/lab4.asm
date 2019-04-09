@@ -125,22 +125,22 @@ debug:        .asciiz "\nDebug result: "
 # Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
 # is valid for both layer 2 and layer 3. Makes for easier indexing (+24 to go down coulmn by 1, +4 to increment row)
 # NOTE: Values divided by 8 to save memory
-rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
-              4,4,4,4,1,1,
-              8,6,5,6,2,2,
-              12,7,6,7,3,3,
-              16,8,7,8,4,4,
-              20,10,8,10,5,5,
-              24,12,10,12,6,6,
-              28,14,12,14,7,7,
-              32,16,14,16,8,8,
-              36,20,16,18,10,10,
-              40,24,20,20,12,12,
-              44,28,24,22,14,14,
-              48,32,28,24,16,16,
-              52,40,32,28,18,18,
-              56,48,40,32,20,20,
-              64,64,64,64,64,64	# 64 represents a BAD bitrate index
+rates: .word  0 ,0 ,0 ,64,0 ,0 ,0 ,	# 0 represents a FREE bitrate index
+              4 ,4 ,4 ,64,4 ,1 ,1 ,
+              8 ,6 ,5 ,64,6 ,2 ,2 ,
+              12,7 ,6 ,64,7 ,3 ,3 ,
+              16,8 ,7 ,64,8 ,4 ,4 ,
+              20,10,8 ,64,10,5 ,5 ,
+              24,12,10,64,12,6 ,6 ,
+              28,14,12,64,14,7 ,7 ,
+              32,16,14,64,16,8 ,8 ,
+              36,20,16,64,18,10,10,
+              40,24,20,64,20,12,12,
+              44,28,24,64,22,14,14,
+              48,32,28,64,24,16,16,
+              52,40,32,64,28,18,18,
+              56,48,40,64,32,20,20,
+              64,64,64,64,64,64,64	# 64 represents a BAD bitrate index
 free: .asciiz "Free\n"
 bad:  .asciiz "Bad\n"
 
@@ -158,6 +158,8 @@ layer:	  .asciiz "I"
 rateTxt:  .asciiz "\nBit Rate (kbps): "
 bye: 	  .asciiz "\n\nEnd of Program\n"
 
+
+result: .asciiz "\nResult: "
           .text              # Executable code follows
 main:
 
@@ -224,16 +226,29 @@ main:
 	# Prepare array index value
 	nor $s0, $s0, $s0	# Invert the version bits with NOR
 	nor $s1, $s1, $s1	# Invert the layer bits with NOR
-	andi $s0, $s0, 3	# bitmask for last two bits
+	andi $s0, $s0, 3	# bitmask for last two bits (v2 and v2.5 share a common bit)
 	andi $s1, $s1, 3 	# bitmask for last two bits
 	move $s3, $s0		# $s3 will combine the version and layer bits to make array index
+	andi $s3, $s3, 1	# v2 and v2.5 share a common bit; this will merge both versions for array index
 	sll $s3, $s3, 2		# shifting 2 to make room for layer bits
 	or $s3, $s3, $s1	# merge the layer bits onto index register
 	sll $s3, $s3, 2		# multiply value by 4 to increment along the row of our 2d array
-	li $t1, 24		# column incrementer multiply value
+	li $t1, 28		# column incrementer multiply value
 	mult $s2, $t1		# multiply bitrate index by 24 to increment down the "columns" of our "2d array"
 	mflo $s2		# result in lo
 	add $s3, $s3, $s2	# combine registers to get the end result bitrate index value
+        
+        #debug
+        li $v0, 4          	# Syscall to print a string
+	la $a0, result     	# We will display the MP3 version
+	syscall                     
+	
+	li $v0, 1
+	move $a0, $s3
+	syscall
+        
+        
+        #end debutg
         
         
         # Print the MP3 Version
