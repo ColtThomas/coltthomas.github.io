@@ -1,8 +1,7 @@
 #####################################################################
 # Program #4: lab4.asm     Programmer: Colt Thomas
-# DERPAAGDSJASDG
 # Due Date: 4/9/19         Course: CS2810
-# Date Last Modified: 4/5
+# Date Last Modified: 4/8
 #####################################################################
 # Functional Description:
 # This program will prompt the user for a hexadecimal value MP3
@@ -22,32 +21,51 @@
 #####################################################################
 # Pseudocode:
 # // Arrays
-# version = ["Layer 3","Layer 2", "Layer 1"]
+# version = ["1","2","2.5"] // Array for version numbers. Stored as strings because 2.5 is not an integer
+# layer = ["III,"II", "I"] // Array that stores roman numerals for mp3 layer
 # rates = [0,0,0 ... 64,64] // This will store a bitrate index array (with values divided by 8)
 #
+#--------------------------------------------------------------------------------------------------------
 # 1 - Print a welcome message that include: your name, a title, and a brief description of the program.
+#--------------------------------------------------------------------------------------------------------
+#
 # cout << "CS2810 - Colt Thomas - Program 4" << endl
 # cout << "This program decodes the 32-bit MP3 header file to show the version, layer and bit rate to the user"
+#
+#--------------------------------------------------------------------------------------------------------
 # 2 - Prompt the user to enter the hexadecimal value of an MP3 file header
+#--------------------------------------------------------------------------------------------------------
+#
 # cout << "Enter the MP3 header: "
 # $t0 << cin
+#
+#--------------------------------------------------------------------------------------------------------
 # 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
 # the MP3 file. 
-# $t0 = readhex($t0) // Takes the input chars and converts hex-like input to integer value
-# 
-#    3a - Store the bit rate table as a 2-dimensional array
-# words = [...bitrate index...]	// will be defined in data segment
-
-#    3b - Extract the MP3 Version, Layer, and Bit-Rate Index from the entered MP# header
+#--------------------------------------------------------------------------------------------------------
 #
-# $s0 = $t0 >> 19 // Obtain the MPEG Audio Version
-# $s1 = $t0 >> 17 // Obtain the Layer description 
-# $s2 = $t0 >> 12 // Obtain the Bitrate Index
-# $s0 = $t0 & 0x3 // bit mask for the MPEG version
-# $s1 = $t0 & 0x3 // bit mask for the Layer
-# $s2 = $t0 & 0xf // bit mask for the Bit-Rate Index
+# $t0 = readhex($t0) // Takes the input chars and converts hex-like input to integer value
+#
+#-------------------------------------------------------------------------------------------------------- 
+#    3a - Store the bit rate table as a 2-dimensional array
+#--------------------------------------------------------------------------------------------------------
+#
+# words = [...bitrate index...]	// will be defined in data segment
+#
+#--------------------------------------------------------------------------------------------------------
+#    3b - Extract the MP3 Version, Layer, and Bit-Rate Index from the entered MP# header
+#--------------------------------------------------------------------------------------------------------
+#
+# $s0 = $t0 >> 19 // Obtain the MPEG Audio Version    AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 00000000 000AAAAA AAAAAABB 
+# $s1 = $t0 >> 17 // Obtain the Layer description     AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 00000000 0AAAAAAA AAAABBCC
+# $s2 = $t0 >> 12 // Obtain the Bitrate Index	      AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 0000AAAA AAAAAAAB BCCDEEEE
+# $s0 = $t0 & 0x3 // bit mask for the MPEG version    00000000 00000000 000AAAAA AAAAAABB -> 00000000 00000000 00000000 000000BB 
+# $s1 = $t0 & 0x3 // bit mask for the Layer	      00000000 00000000 0AAAAAAA AAAABBCC -> 00000000 00000000 00000000 000000CC
+# $s2 = $t0 & 0xf // bit mask for the Bit-Rate Index  00000000 0000AAAA AAAAAAAB BCCDEEEE -> 00000000 00000000 00000000 0000EEEE
 # 
+#--------------------------------------------------------------------------------------------------------
 #    3c - Retrieve the appropriate value from the array based on the extracted values
+#--------------------------------------------------------------------------------------------------------
 #
 # Array index prep
 # $s0 = ~$s0 // Invert version bits (only care about last bit; 11 is Version 1, 10/00 is Versions 2/2.5.)
@@ -59,7 +77,7 @@
 # $s3 = $s3 & $s1 // concatenate layer bits onto index register
 # $s3 << 2	// multiply value by 4 (shift left 2) to increment along the row of our 2d array
 #
-# Index prep results in the following increment
+# Example - Index prep results in the following increment
 # 1111 -> 0000 Version 1 Layer 1
 # 1110 -> 0001 Version 1 Layer 2
 # etc...
@@ -70,15 +88,22 @@
 # rates[$s3] << 3 // Shift left by 3 to multiply by 8. The entire array was divided by 8 to save memory.
 
 #
+#--------------------------------------------------------------------------------------------------------
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
-# cout << "MPEG Version " << $s2 << endl;
-# cout << "Layer " << layer[$s1] << endl;
-# cout << "Bit Rate: " << rates[$s3] << endl; 
+#--------------------------------------------------------------------------------------------------------
+#
+# cout << "MPEG Version " << $s2 << endl;  // bitrate index needs no modification. Interpret as integer
+# cout << "Layer " << layer[$s1] << endl;  // Access array of .asciiz text for layers
+# cout << "Bit Rate: " << rates[$s3]*8 << endl;	// Remember to multiply array value by 8 to get original bitrate  
 #
 #
 #
+#--------------------------------------------------------------------------------------------------------
 # 5 - Print a farewell message and exit the program gracefully.
+#--------------------------------------------------------------------------------------------------------
+#
 # cout << "\n\nEnd of Program\n"
+#
 ######################################################################
 # Register Usage:
 # $v0: Used for input and output of values
@@ -90,12 +115,12 @@
 # $s2: Stores the bits representing the MP Version
 # $s3: Used to access bitrate index array value 
 ######################################################################
-	.data              # Data declaration section
+	      .data              # Data declaration section
 # Entries here are <label>:  <type>   <value>
-welcome: .asciiz "\nCS2810 - Colt Thomas - Program 4"
-description: .asciiz "\nThis program decodes the 32-bit MP3 header file to show the version, layer and bit rate to the user"
-prompt:  .asciiz "\n\nEnter the MP3 header: "
-debug: .asciiz "\nDebug result: "
+welcome:      .asciiz "\nCS2810 - Colt Thomas - Program 4"
+description:  .asciiz "\nThis program decodes the 32-bit MP3 header file to show the version, layer and bit rate to the user"
+prompt:       .asciiz "\n\nEnter the MP3 header: "
+debug:        .asciiz "\nDebug result: "
 
 # Bitrate index array. Contains bit rates given MP3 version and layer. Added a 6th column since the 5th column
 # is valid for both layer 2 and layer 3. Makes for easier indexing (+24 to go down coulmn by 1, +4 to increment row)
@@ -116,28 +141,30 @@ rates: .word  0,0,0,0,0,0,	# 0 represents a FREE bitrate index
               52,40,32,28,18,18,
               56,48,40,32,20,20,
               64,64,64,64,64,64	# 64 represents a BAD bitrate index
-
-result: .asciiz "\nResult: "
-#comma: .asciiz ","
-
 free: .asciiz "Free\n"
-bad: .asciiz "Bad\n"
+bad:  .asciiz "Bad\n"
 
+# MP3 Version strings to display
 versionTxt: .asciiz "\nMPEG Version "
-version:  	.asciiz "1"
-		.asciiz "2"
-		.asciiz "2.5"
+version:    .asciiz "1"
+	    .asciiz "2"
+	    .asciiz "2.5"
+		
+# MP3 Layer strings to display
 layerTxt: .asciiz "\nLayer "
-layer:	.asciiz "I"
-	.asciiz "II"
-	.asciiz "III"
-rateTxt: .asciiz "\nBit Rate: "
-bye: .asciiz "\n\nEnd of Program\n"
-	.text              # Executable code follows
-main:
-# Include your code here
+layer:	  .asciiz "I"
+	  .asciiz "II"
+	  .asciiz "III"
+rateTxt:  .asciiz "\nBit Rate (kbps): "
+bye: 	  .asciiz "\n\nEnd of Program\n"
 
+          .text              # Executable code follows
+main:
+
+############################################################################################################
 # Part 1 - Print a welcome message that include: your name, a title, and a brief description of the program.
+############################################################################################################
+	
 	li $v0, 4          # Syscall to print a string
 	la $a0, welcome     # We will display the welcome message
 	syscall
@@ -145,8 +172,11 @@ main:
 	li $v0, 4          # Syscall to print a string
 	la $a0, description     # We will display the description
 	syscall
-
+	
+###############################################################################
 # Part 2 - Prompt the user to enter the hexadecimal value of an MP3 file header	
+###############################################################################
+	
 	li $v0, 4          # Syscall to print a string
 	la $a0, prompt     # We will display the prompt
 	syscall
@@ -155,17 +185,10 @@ main:
 	
 	# Displays the $t0 value (user input hex to int value)
 	move $t0, $v0      # Save the result of reading a hex
-	#li $v0, 4          # Get ready to label result
-	#la $a0, mesg1      
-        #syscall
-        #li $v0, 1
-        #move $a0, $t0
-        #syscall
-	#li $v0, 4          # Get ready to label result
-	#la $a0, mesg2      
-        #syscall
-
+	
+########################################################################################################
 # Part 3 - Use the decoding information for MP3 file headers to determine the bit rate used in recording 
+########################################################################################################
 
 	# -------------- MP3 header format -----------------
 	#	AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM
@@ -185,27 +208,19 @@ main:
 	# ---------------------------------------------------
 
 	# shift right by 16 bits in preparation for bit mask
-	srl $s0, $t0, 19 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 00000000 000AAAAA AAAAAABB
-	srl $s1, $t0, 17 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 00000000 0AAAAAAA AAAABBCC 
-	srl $s2, $t0, 12 # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM  ->  00000000 0000AAAA AAAAAAAB BCCDEEEE 
+	srl $s0, $t0, 19  # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 00000000 000AAAAA AAAAAABB
+	srl $s1, $t0, 17  # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 00000000 0AAAAAAA AAAABBCC 
+	srl $s2, $t0, 12  # AAAAAAAA AAABBCCD EEEEFFGH IIJJKLMM -> 00000000 0000AAAA AAAAAAAB BCCDEEEE 
 
-	andi $s0, $s0, 3 # Bit mask for the MPEG Audio Version
-	andi $s1, $s1, 3 # Bit mask for the Layer Description
-	andi $s2, $s2, 15 # Bit mask for the Bitrate Index
+	andi $s0, $s0, 3  # 00000000 00000000 000AAAAA AAAAAABB -> 00000000 00000000 00000000 000000BB # Bit mask for the MPEG Audio Version
+	andi $s1, $s1, 3  # 00000000 00000000 0AAAAAAA AAAABBCC -> 00000000 00000000 00000000 000000CC # Bit mask for the Layer Description  
+	andi $s2, $s2, 15 # 00000000 0000AAAA AAAAAAAB BCCDEEEE -> 00000000 00000000 00000000 0000EEEE # Bit mask for the Bitrate Index     
 	
-	
-	#------------------Debug-----------------------------
-	#li $v0, 4          
-	#la $a0, debug
-        #syscall
-        
-        #li $v0, 1
-        #move $a0, $s2
-        #syscall
-	#------------------Debug-----------------------------
-             
+##################################################################################
 # 4 - Display the MP3 version, layer and bit rate as appropriately labeled strings
-	
+##################################################################################
+
+
 	# Prepare array index value
 	nor $s0, $s0, $s0	# Invert the version bits with NOR
 	nor $s1, $s1, $s1	# Invert the layer bits with NOR
@@ -219,14 +234,11 @@ main:
 	mult $s2, $t1		# multiply bitrate index by 24 to increment down the "columns" of our "2d array"
 	mflo $s2		# result in lo
 	add $s3, $s3, $s2	# combine registers to get the end result bitrate index value
-	
-	
-         
-
+        
         
         # Print the MP3 Version
-	li $v0, 4          # Syscall to print a string
-	la $a0, versionTxt     # We will display the MP3 version
+	li $v0, 4          	# Syscall to print a string
+	la $a0, versionTxt     	# We will display the MP3 version
 	syscall                     
 	                       
 	li $v0, 4                                                    	
@@ -235,8 +247,8 @@ main:
 	add $a0, $a0, $t0	# add the base address offset
 	syscall                                                                                   
 	                                                                                                                                               
-	li $v0, 4          # Syscall to print a string
-	la $a0, layerTxt     # We will display the MP3 layer
+	li $v0, 4          	# Syscall to print a string
+	la $a0, layerTxt     	# We will display the MP3 layer
 	syscall
 	
 	li $v0, 4                                                    	
@@ -245,22 +257,23 @@ main:
 	add $a0, $a0, $t0	# add the base address offset
 	syscall  
 	                     
-	li $v0, 4          # Syscall to print a string
-	la $a0, rateTxt     # We will display the MP3 bitrate
+	li $v0, 4          	# Syscall to print a string
+	la $a0, rateTxt    	# We will display the MP3 bitrate
 	syscall                     
 
                 
       	# Print the Bitrate value (or string)
 	la $t1, rates
 	add $t1, $t1, $s3	# increment to proper bitrate index address
-	lw $a0, 0($t1) 	# byte addressible memory
-	sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
+	lw $a0, 0($t1) 		# byte addressible memory
+	sll $a0, $a0, 3		# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
+	
 	# check for free or bad bitrate
-	li $v0 4	# print a string instead if free bit
-	li $t1, 512	# represents a BAD Bitrate
+	li $v0 4		# print a string instead if free bit
+	li $t1, 512		# represents a BAD Bitrate
 	bge $a0,$t1,badbit	# check for bitrate >= 512 (or 8*64)
 	beqz  $a0, freebit	# check for bitrate of 0
-	li $v0 1	# otherwise print integer
+	li $v0 1		# otherwise print integer
 	j printInt
 freebit:
 	la $a0, free	#print FREE
@@ -269,9 +282,10 @@ badbit:
 	la $a0, bad	#print BAD
 printInt:
 	syscall                    
-                                                                     
- # 5 - Print a farewell message and exit the program gracefully.        
- 
+     
+###############################################################                                                                
+# 5 - Print a farewell message and exit the program gracefully.        
+############################################################### 
  	li $v0, 4       # Syscall to print a string
 	la $a0, bye    	# "bye" message
 	syscall  
@@ -322,30 +336,3 @@ hexend:	move $v0, $t0        # Set $v0 to the return value
 	addi $sp, $sp, 8     # free the stack by changing the stack pointer
 	jr   $ra             # Return to where called
 
-
-	# Print the entire array $t7 as increment
-	#li $t7, 0	# initiate incrementer
-	#li $v0 1	# syscall param for displaying integer
-	#la $t1, rates
-	#add $t1, $t1, $s3	# increment to proper bitrate index address
-	#lw $a0, 0($t1) 	# byte addressible memory
-	#sll $a0, $a0, 3	# Bitrate table is divided by 8. Reverse this by shifting left by 3 (mult by 8)
-	#syscall
-	#------------------Debug-----------------------------
-#while: 
-#	bge $t7, 60, endloop
-#	addi $t7, $t7, 1	# increment
-#	li $v0, 4	# print comma separator
-#	la $a0, comma
-#	syscall
-#	
-#	li $v0 1
-#	addi $t1, $t1, 4	# increment the array access
-#	lw $a0, 0($t1) 	# byte addressible memory
-#	syscall
-#	j while
-#endloop:	
-
-
-
-	#------------------Debug-----------------------------
