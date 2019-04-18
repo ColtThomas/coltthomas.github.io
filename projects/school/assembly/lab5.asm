@@ -236,9 +236,9 @@ powerNegative:
 	mov.s $f1, $f0		# $f1 to contain power result
 beginPowerNegative:
 	ble  $t0, $t1, endPowerNegative	# Iterator starts at 1, and branches when it reaches $t1
-	div.s $f1, $f1, $f0	# Multiply float by itself, since MIPS doesn't have power operator
-	addi $t0, $t0, -1	# increment by 1
-	j beginPowerNegative			# loop
+	div.s $f1, $f1, $f0	# Divide float by itself
+	addi $t0, $t0, -1	# decrement by 1
+	j beginPowerNegative	# loop
 endPowerNegative:
 	jr $ra			# end routine; jump to return address
 	
