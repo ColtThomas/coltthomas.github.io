@@ -1,7 +1,7 @@
 #####################################################################
 # Program #5: lab5.asm     Programmer: Colt Thomas
 # Due Date: 4/22/2019    Course: CS2810
-# Date Last Modified: 4/17/19
+# Date Last Modified: 4/18/19
 #####################################################################
 # Functional Description:
 # This program accepts a floating point value, and an integer power
@@ -96,8 +96,6 @@ continue: .asciiz "\nContinue? (y/N): "
 vString:  .space 16
 newline: .asciiz "\n"
 bye:	 .asciiz "\nProgram has finished its shenanigans"
-debug: .asciiz "\nDebug Result: "
-derp: .asciiz "\nDerp"
 one: .float 1.0
 	.text              # Executable code follows
 main:
@@ -180,22 +178,22 @@ result:
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Part 5: Repeat steps 3 through 5 as long as the user desires to continue
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	li $v0, 4		# Prompt user to continue
+	li $v0, 4	# Prompt user to continue
 	la $a0, continue
 	syscall
 	
 	
-	li $v0, 8		# This immediate saved to $v0 allows a string to be read in after a system call
-	la $a0, vString		# First parameter for syscall is the register destination for input string
-	li $a1, 2		# Second parameter specifies the input length max (2 in this case, for extra null char)
+	li $v0, 8	# This immediate saved to $v0 allows a string to be read in after a system call
+	la $a0, vString	# First parameter for syscall is the register destination for input string
+	li $a1, 2	# Second parameter specifies input length max (2 in this case, for extra null char)
 	syscall
 	
-	la $s0, vString 	# Grab address of input char to verify user input
-	lb $t3, ($s0)		# Loading a single byte (a char) so we can check for a "y" or "Y". Other chars ignored.
-	addi $t3, $t3, -89	# ASCII for Y=89; subtract this from input char...
-	beqz $t3, loop		# if zero, we have a match and go back to the top
-	addi $t3, $t3, -32	# ASCII for y=121=89+32; subtract 32 to check for "y"
-	beqz $t3, loop		# if zero, we have a match and go back to the top
+	la $s0, vString    # Grab address of input char to verify user input
+	lb $t3, ($s0)	   # Loading input char to check for a "y" or "Y". Other chars ignored.
+	addi $t3, $t3, -89 # ASCII for Y=89; subtract this from input char...
+	beqz $t3, loop	   # if zero, we have a match and go back to the top
+	addi $t3, $t3, -32 # ASCII for y=121=89+32; subtract 32 to check for "y"
+	beqz $t3, loop	   # if zero, we have a match and go back to the top
 		
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Part 6: Print a farewell message and exit the program gracefully.
@@ -220,7 +218,7 @@ power:
 	mov.s $f1, $f0		# $f1 to contain power result
 begin:				# For loop; multiply float by itself by $t1 times (power)
 	bge $t0, $t1, endpower	# Iterator starts at 1, and branches when it reaches $t1
-	mul.s $f1, $f1, $f0	# Multiply float by itself, since MIPS doesn't have power operator
+	mul.s $f1, $f1, $f0	# Multiply float by itself; MIPS has no power operator
 	addi $t0, $t0, 1	# increment by 1
 	j begin			# loop
 endpower:	
