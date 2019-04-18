@@ -62,6 +62,7 @@ NET "Led<7>"      LOC = "R4";      # Bank = 3, Pin name = IO/VREF_3, Type = VREF
 ## 12 pin connectors
 
 ##JA
+NET "Dout"       LOC = "L15"; # Verify that this is valid input
 #NET "JA<0>"       LOC = "L15";     # Bank = 1, Pin name = IO_L09N_1/A11, Type = DUAL,                    Sch name = JA1
 #NET "JA<1>"       LOC = "K12";     # Bank = 1, Pin name = IO_L11N_1/A9/RHCLK1, Type = RHCLK/DUAL,        Sch name = JA2
 #NET "JA<2>"       LOC = "L17";     # Bank = 1, Pin name = IO_L10N_1/VREF_1, Type = VREF,                 Sch name = JA3
