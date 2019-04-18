@@ -35,14 +35,25 @@
 #++++++++++++++++++++++++++++++++++++++++++++++
 # Part 4: Use a procedure of your design to
 #++++++++++++++++++++++++++++++++++++++++++++++
-#
-# $f1 = power($f0) 
+# if($t1 > 0) {
+#     	$f1 = power($f0) 
+#} else if ($t1 < 0) {
+#     	$f1 = powerNegative($f0)
+#} else
+#	$f1 = 1.0  //power of 0 is 1
+#}
 #	|------------------------------------------------------------------
 #   	|4a Compute the floating point value raised to the entered value
 #	|------------------------------------------------------------------
-# 	| $f1 = $f0	// $f1 to contain output float
-# 	| for (i=0; i < $t1 ; i++)
-#     	|     $f1 = $f1 * $f0
+# 	|power(float $f0) {
+#	| $f1 = $f0	// $f1 to contain output float
+# 	| for (i=1; i < $t1 ; i++)
+#     	|     $f1 = $f1 * $f0 } // multiply up
+# 	|powerNegative(float $f0) {
+#	| $f1 = $f0	// $f1 to contain output float
+# 	| for (i=1; i > $t1 ; i--)
+#     	|     $f1 = $f1 / $f0 }	// divide down
+#
 #------------------------------------------
 #   4b Display the result of that operation
 #------------------------------------------
@@ -66,7 +77,6 @@
 ######################################################################
 # Register Usage:
 # $v0: Used for input and output of values
-# $s0: The value N for Fibonacci(N)
 # $t0: Loop iterator in routine
 # $t1: Contains the power given by user
 # $a0: Used to pass addresses and values to syscalls
@@ -88,6 +98,7 @@ newline: .asciiz "\n"
 bye:	 .asciiz "\nProgram has finished its shenanigans"
 debug: .asciiz "\nDebug Result: "
 derp: .asciiz "\nDerp"
+one: .float 1.0
 	.text              # Executable code follows
 main:
 
@@ -129,10 +140,19 @@ loop:
 #------------------------------------------------------------------
 #   4a Compute the floating point value raised to the entered value
 #------------------------------------------------------------------
-jal power		# Procedure that will compute the power of input float
+	bltz   $t1, negative
+	beqz $t1, zero
+	jal power		# Procedure that will compute the power of input float
+	j result
+negative:
+	jal powerNegative
+	j result
+zero:
+	l.s $f1, one
 #------------------------------------------
 #   4b Display the result of that operation
 #------------------------------------------
+result:
 	li $v0, 4	# Newline print for clean text
 	la $a0, newline
 	syscall
@@ -205,3 +225,21 @@ begin:				# For loop; multiply float by itself by $t1 times (power)
 	j begin			# loop
 endpower:	
 	jr $ra			# end routine; jump to return address
+
+#####################################################################
+## The subroutine power is provided to compute the negative power  ##
+## of a floating point number, result returned in register $v0.    ##
+#+-----------------------------------------------------------------+#
+#####################################################################
+powerNegative:
+	li $t0 1		# init for loop iterator
+	mov.s $f1, $f0		# $f1 to contain power result
+beginPowerNegative:
+	ble  $t0, $t1, endPowerNegative	# Iterator starts at 1, and branches when it reaches $t1
+	div.s $f1, $f1, $f0	# Multiply float by itself, since MIPS doesn't have power operator
+	addi $t0, $t0, -1	# increment by 1
+	j beginPowerNegative			# loop
+endPowerNegative:
+	jr $ra			# end routine; jump to return address
+	
+	
