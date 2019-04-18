@@ -16,8 +16,8 @@
 - System level design for LED strip oscillation
 
 **Equipment:**
--Adafruit MCP3008
--Xilinx Nexys2 Development Board
+- Adafruit MCP3008
+- Xilinx Nexys2 Development Board
 
 ## Notes for the 3008 ADC
 - Vdd: Power supply. set to 5V (3.3V also acceptable)
@@ -36,3 +36,4 @@ sampled signal.
 
 **Useful Links:**
 [Simplified FIR Filter Structure](https://www.embedded.com/design/real-time-and-performance/4008837/DSP-Tricks-An-odd-way-to-build-a-simplified-FIR-filter-structure)
+[ADC Datasheet - MCP3008](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)
