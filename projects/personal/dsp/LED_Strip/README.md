@@ -8,6 +8,7 @@
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
 
 **TODO:**
+- Create ICEstick ADC connection verification module; LED indicative for positive serial connection
 - Test PMOD Vdd/Ground pins to see if they are automatically enabled
 - Create buffer to store samples
 - Create a high level controller to initiate DSP operations and manage incoming samples
