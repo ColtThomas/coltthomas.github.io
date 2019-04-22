@@ -27,6 +27,12 @@
 
 ## Notes for the Nexys 2 board
 - It looks like the PMOD connectors have the ground and Vdd constantly enabled. Check to see what each pin is configured as.
+
+## Notes for ICEstick
+- Try to run code on an ICEstick in tandem with the Nexys; I had a random issue where the Nexys wouldn't place and route in ISE
+- Need to find/create a PCF file, which is equivalent to a .ucf file
+- See this [tutorial](https://www.youtube.com/watch?v=1CNVsxoLI60) on how to get an ICEstick to run your firmware
+
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
 calculated quantity of voltage. E.G. for 5Vref, 1 bit represents 0.00488V. A smaller Vref gives higher precision, but a lower Vmax for a 
