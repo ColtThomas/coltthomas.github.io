@@ -11,7 +11,7 @@
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
 
 **TODO:**
-- Clock correction
+- Clock correction (3.6 MHz for 5 Vref, 1.35 MHz for 2.7 Vref)
 - Create ICEstick ADC connection verification module; LED indicative for positive serial connection
 - Test PMOD Vdd/Ground pins to see if they are automatically enabled
 - Create buffer to store samples
