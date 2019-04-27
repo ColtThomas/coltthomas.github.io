@@ -2,12 +2,16 @@
 
 **Description:** Adds a lightshow to your beats. Input your favorite beats as audio to the system to get LEDs that oscillate with the bass
 
-**Status:** Incomplete. A verilog module was created to receive the individual samples, and a Verilog testbench file was created. Verilog requires a live test on the FPGA with the ADC. A python script was created to generate FIR coefficients, and successfully filters simple sinusoidal signals.
+**Status:** Incomplete. 
+- A verilog module was created to receive the individual samples, and a Verilog testbench file was created. Verilog requires a live test on the FPGA with the ADC. (Complete)
+- A python script was created to generate FIR coefficients, and successfully filters simple sinusoidal signals.
+- Nexys 2 board connected to the ADC. No samples were received; Microphones for audio input may be inoperable, or the output voltage from the FPGA insufficient. The clock may also be too fast @50MHz
 
 **In Progress:**
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
 
 **TODO:**
+- Clock correction
 - Create ICEstick ADC connection verification module; LED indicative for positive serial connection
 - Test PMOD Vdd/Ground pins to see if they are automatically enabled
 - Create buffer to store samples
