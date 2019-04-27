@@ -29,6 +29,19 @@
 ## Notes for the Nexys 2 board
 - It looks like the PMOD connectors have the ground and Vdd constantly enabled. Check to see what each pin is configured as.
 
+**Wire Connections**
+Rough text-based block diagram:
+
+MCP3008          Nexys2 PMOD
+Vdd -----------> (pin 6)
+Vref ----------> (pin 6)
+AGND ----------> (pin 5)
+CLK  ----------> JA1(pin 1)
+Dout ----------> JA2(pin 2)
+Din -----------> JA3(pin 3)
+CS ------------> JA4(pin 4, may need to invert signal? See MCP data sheet)
+DGND ----------> (pin 5)
+
 ## Notes for ICEstick
 - Try to run code on an ICEstick in tandem with the Nexys; I had a random issue where the Nexys wouldn't place and route in ISE
 - Need to find/create a PCF file, which is equivalent to a .ucf file
