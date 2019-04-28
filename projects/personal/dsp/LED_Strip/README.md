@@ -38,14 +38,14 @@
 Rough text-based block diagram:
 
 MCP3008          Nexys2 PMOD
-Vdd -----------> (pin 6)
-Vref ----------> (pin 6)
-AGND ----------> (pin 5)
-CLK  ----------> JA1(pin 1)
-Dout ----------> JA2(pin 2)
-Din -----------> JA3(pin 3)
-CS ------------> JA4(pin 4, may need to invert signal? See MCP data sheet)
-DGND ----------> (pin 5)
+Vdd -----------> (pin 6)  
+Vref ----------> (pin 6)  
+AGND ----------> (pin 5)  
+CLK  ----------> JA1(pin 1)  
+Dout ----------> JA2(pin 2)  
+Din -----------> JA3(pin 3)  
+CS ------------> JA4(pin 4, may need to invert signal? See MCP data sheet)  
+DGND ----------> (pin 5)  
 
 ## Notes for ICEstick
 - Try to run code on an ICEstick in tandem with the Nexys; I had a random issue where the Nexys wouldn't place and route in ISE
@@ -55,10 +55,10 @@ DGND ----------> (pin 5)
 ### Procedures for Running Firmware
 For now, just take the following on blind faith:
 
-`yosys -p  "synth_ice40 -blif demo.blif" demo.v`
-`arachne-pnr -d 1k -p icestick.pcf demo.blif -o demo.txt`
-`icepack demo.txt demo.bin`
-`iceprog demo.bin`
+`yosys -p  "synth_ice40 -blif demo.blif" demo.v`  
+`arachne-pnr -d 1k -p icestick.pcf demo.blif -o demo.txt`  
+`icepack demo.txt demo.bin`  
+`iceprog demo.bin`  
 
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
