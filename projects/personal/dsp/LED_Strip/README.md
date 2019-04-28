@@ -55,10 +55,10 @@ DGND ----------> (pin 5)
 ### Procedures for Running Firmware
 For now, just take the following on blind faith:
 
-`yosys -p  "synth_ice40 -blif demo.blif" demo.v
-arachne-pnr -d 1k -p icestick.pcf demo.blif -o demo.txt
-icepack demo.txt demo.bin
-iceprog demo.bin`
+`yosys -p  "synth_ice40 -blif demo.blif" demo.v`
+`arachne-pnr -d 1k -p icestick.pcf demo.blif -o demo.txt`
+`icepack demo.txt demo.bin`
+`iceprog demo.bin`
 
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
@@ -68,5 +68,5 @@ sampled signal.
 ## Filtering
 
 **Useful Links:**
-[Simplified FIR Filter Structure](https://www.embedded.com/design/real-time-and-performance/4008837/DSP-Tricks-An-odd-way-to-build-a-simplified-FIR-filter-structure)
-[ADC Datasheet - MCP3008](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)
+- [Simplified FIR Filter Structure](https://www.embedded.com/design/real-time-and-performance/4008837/DSP-Tricks-An-odd-way-to-build-a-simplified-FIR-filter-structure)
+- [ADC Datasheet - MCP3008](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)
