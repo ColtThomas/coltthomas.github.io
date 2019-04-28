@@ -6,6 +6,7 @@
 - A verilog module was created to receive the individual samples, and a Verilog testbench file was created. Verilog requires a live test on the FPGA with the ADC. (Complete)
 - A python script was created to generate FIR coefficients, and successfully filters simple sinusoidal signals.
 - Nexys 2 board connected to the ADC. No samples were received; Microphones for audio input may be inoperable, or the output voltage from the FPGA insufficient. The clock may also be too fast @50MHz
+- Found out how to program the ICEstick with a basic led hello world; will try to interface with ADC
 
 **In Progress:**
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
@@ -50,6 +51,14 @@ DGND ----------> (pin 5)
 - Try to run code on an ICEstick in tandem with the Nexys; I had a random issue where the Nexys wouldn't place and route in ISE
 - Need to find/create a PCF file, which is equivalent to a .ucf file
 - See this [tutorial](https://www.youtube.com/watch?v=1CNVsxoLI60) on how to get an ICEstick to run your firmware
+
+### Procedures for Running Firmware
+For now, just take the following on blind faith:
+
+`yosys -p  "synth_ice40 -blif demo.blif" demo.v
+arachne-pnr -d 1k -p icestick.pcf demo.blif -o demo.txt
+icepack demo.txt demo.bin
+iceprog demo.bin`
 
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
