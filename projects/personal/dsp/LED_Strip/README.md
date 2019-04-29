@@ -49,7 +49,7 @@ DGND ----------> (pin 5)
 
 ## Notes for ICEstick
 - Try to run code on an ICEstick in tandem with the Nexys; I had a random issue where the Nexys wouldn't place and route in ISE
-- Need to find/create a PCF file, which is equivalent to a .ucf file
+- Need to find/create a PCF file, which is equivalent to a .ucf file (complete)
 - See this [tutorial](https://www.youtube.com/watch?v=1CNVsxoLI60) on how to get an ICEstick to run your firmware
 
 ### Procedures for Running Firmware
