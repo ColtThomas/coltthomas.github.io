@@ -60,6 +60,11 @@ For now, just take the following on blind faith:
 `icepack demo.txt demo.bin`  
 `iceprog demo.bin`  
 
+## Toolchain notes
+The executable for ModelSim can be found in: '~/ModelSim/modelsim_ase/linuxaloem/vsim'. I followed the instructions for method
+one at [this](https://mattaw.blogspot.com/2014/05/making-modelsim-altera-starter-edition.html) link. ModelSim is a bit easier to 
+use since Xilinx ISE requires .tcl files to simulate vs. using a Verilog/SystemVerilog testbench.
+
 ## Sampling 
 -Each sample produces a 10 bit serial code (2^10 = 1024). This gives us a precision of Vref/1024 meaining that for every one bit, we get the 
 calculated quantity of voltage. E.G. for 5Vref, 1 bit represents 0.00488V. A smaller Vref gives higher precision, but a lower Vmax for a 
