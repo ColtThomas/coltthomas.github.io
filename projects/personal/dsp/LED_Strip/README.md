@@ -37,7 +37,7 @@
 **Wire Connections**
 Rough text-based block diagram:
 
-MCP3008          Nexys2 PMOD
+MCP3008          Nexys2 PMOD  
 Vdd -----------> (pin 6)  
 Vref ----------> (pin 6)  
 AGND ----------> (pin 5)  
