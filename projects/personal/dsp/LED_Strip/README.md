@@ -31,6 +31,12 @@
 - Fsample: 200 ksps
 - Fclock: 18*Fsample
 
+### Sample Frequency
+- Target sample frequency is 96kHz
+- 96KHz * 18 = 1.728MHz required clk
+- Nexys board clk divider math: 50MHz/1.728MHz = 28.93 => 29
+- ICEStick clk divider math: 
+
 ## Notes for the Nexys 2 board
 - It looks like the PMOD connectors have the ground and Vdd constantly enabled. Check to see what each pin is configured as.
 
