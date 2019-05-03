@@ -6,7 +6,7 @@ In a linux terminal you run the following commands:
 
 'yosys -p  "synth_ice40 -blif top.blif" top.v'
 
-'arachne-pnr -d 1k -p icestick.pcf demo.blif -o top.txt'
+'arachne-pnr -d 1k -p icestick.pcf top.blif -o top.txt'
 
 'icepack top.txt top.bin'
 
