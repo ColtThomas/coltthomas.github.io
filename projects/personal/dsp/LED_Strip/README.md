@@ -81,3 +81,4 @@ sampled signal.
 **Useful Links:**
 - [Simplified FIR Filter Structure](https://www.embedded.com/design/real-time-and-performance/4008837/DSP-Tricks-An-odd-way-to-build-a-simplified-FIR-filter-structure)
 - [ADC Datasheet - MCP3008](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)
+- [ICEstick Guide](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=11&ved=2ahUKEwjLo6G6jYDiAhWS9Z4KHWuFA2cQFjAKegQIBBAC&url=http%3A%2F%2Fwww.latticesemi.com%2F~%2Fmedia%2FLatticeSemi%2FDocuments%2FUserManuals%2FEI%2Ficestickusermanual.pdf&usg=AOvVaw19ZCAmDB7WRAJ_kS7Q2jhQ)
