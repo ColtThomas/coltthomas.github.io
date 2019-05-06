@@ -7,13 +7,17 @@
 - A python script was created to generate FIR coefficients, and successfully filters simple sinusoidal signals.
 - Nexys 2 board connected to the ADC. No samples were received; Microphones for audio input may be inoperable, or the output voltage from the FPGA insufficient. The clock may also be too fast @50MHz
 - Found out how to program the ICEstick with a basic led hello world; will try to interface with ADC
+- Clock divider created in Verilog
 
 **In Progress:**
 - Verilog sample receiver module - Runs fine with virtual simulation; will verify implementation on FPGA
 
 **TODO:**
-- Clock correction (Max input freq: 3.6 MHz for 5 Vref, 1.35 MHz for 2.7 Vref,2.3MHz for 3.3Vref)
-- Create ICEstick ADC connection verification module; LED indicative for positive serial connection
+- ~~Clock correction (Max input freq: 3.6 MHz for 5 Vref, 1.35 MHz for 2.7 Vref,2.3MHz for 3.3Vref)~~
+- ~~Create ICEstick ADC connection verification module; LED indicative for positive serial connection~~
+- SPI drivers
+- Fix ICEstick FPGA: unable to program board for some reason... try Lattice Diamond software
+- Investigate usage of Teensy 3.2 microcontroller
 - Test PMOD Vdd/Ground pins to see if they are automatically enabled
 - Create buffer to store samples
 - Create a high level controller to initiate DSP operations and manage incoming samples
@@ -30,6 +34,7 @@
 - Vref: Max imput voltage to ADC. Set to 5V for audio (3.3V also acceptable)
 - Fsample: 200 ksps
 - Fclock: 18*Fsample
+- SPI compatability; try looking for SPI libraries for respective devices
 
 ### Sample Frequency
 - Target sample frequency is 96kHz
@@ -66,6 +71,9 @@ For now, just take the following on blind faith:
 `icepack demo.txt demo.bin`  
 `iceprog demo.bin`  
 
+## Notes for the Teensy 3.2
+- The Teensy is SPI compatable; try to find libraries and interface with the ADC
+
 ## Toolchain notes
 The executable for ModelSim can be found in: '~/ModelSim/modelsim_ase/linuxaloem/vsim'. I followed the instructions for method
 one at [this](https://mattaw.blogspot.com/2014/05/making-modelsim-altera-starter-edition.html) link. ModelSim is a bit easier to 
@@ -82,3 +90,4 @@ sampled signal.
 - [Simplified FIR Filter Structure](https://www.embedded.com/design/real-time-and-performance/4008837/DSP-Tricks-An-odd-way-to-build-a-simplified-FIR-filter-structure)
 - [ADC Datasheet - MCP3008](https://cdn-shop.adafruit.com/datasheets/MCP3008.pdf)
 - [ICEstick Guide](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=11&ved=2ahUKEwjLo6G6jYDiAhWS9Z4KHWuFA2cQFjAKegQIBBAC&url=http%3A%2F%2Fwww.latticesemi.com%2F~%2Fmedia%2FLatticeSemi%2FDocuments%2FUserManuals%2FEI%2Ficestickusermanual.pdf&usg=AOvVaw19ZCAmDB7WRAJ_kS7Q2jhQ)
+- [Teensy 3.2 Pinout](https://www.pjrc.com/teensy/card7a_rev1.pdf)
