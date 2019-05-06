@@ -72,7 +72,8 @@ For now, just take the following on blind faith:
 `iceprog demo.bin`  
 
 ## Notes for the Teensy 3.2
-- The Teensy is SPI compatable; try to find libraries and interface with the ADC
+- ~~The Teensy is SPI compatable; try to find libraries and interface with the ADC~~
+- The Teensy 3.2 has 2 ADC channels. Check out [these libraries](https://github.com/pedvide/ADC)
 
 ## Toolchain notes
 The executable for ModelSim can be found in: '~/ModelSim/modelsim_ase/linuxaloem/vsim'. I followed the instructions for method
