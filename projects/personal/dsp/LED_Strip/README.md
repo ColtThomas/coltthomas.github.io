@@ -30,7 +30,8 @@
 - Xilinx Nexys2 Development Board
 
 ## LED Power Notes
-- Recommended N channel MOSFET: [IRLB8721](https://www.jameco.com/z/IRLB8721PBF-Infineon-Technologies-IRLB8721-HEXFET-reg-Power-N-Channel-MOSFET_2210626.html)
+- Recommended N channel MOSFET for LED power: [IRLB8721](https://www.jameco.com/z/IRLB8721PBF-Infineon-Technologies-IRLB8721-HEXFET-reg-Power-N-Channel-MOSFET_2210626.html)
+- Recommended 12v to 5v step-down for microcontroller/fpga: [L78](https://www.mouser.com/datasheet/2/389/l78-974043.pdf)
 - Safest/easiest way to power the strips are to use a 12V cigarette lighter output.
 - For dimming, use PWM [(tutorial)](https://learn.adafruit.com/rgb-led-strips/usage)
 
