@@ -32,6 +32,7 @@
 ## LED Power Notes
 - Recommended N channel MOSFET: [IRLB8721](https://www.jameco.com/z/IRLB8721PBF-Infineon-Technologies-IRLB8721-HEXFET-reg-Power-N-Channel-MOSFET_2210626.html)
 - Safest/easiest way to power the strips are to use a 12V cigarette lighter output.
+- For dimming, use PWM
 
 ## Notes for the 3008 ADC
 - Vdd: Power supply. set to 5V (3.3V also acceptable)
