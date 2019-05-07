@@ -34,6 +34,7 @@
 - Recommended 12v to 5v step-down for microcontroller/fpga: [L78](https://www.mouser.com/datasheet/2/389/l78-974043.pdf)
 - Safest/easiest way to power the strips are to use a 12V cigarette lighter output.
 - For dimming, use PWM [(tutorial)](https://learn.adafruit.com/rgb-led-strips/usage)
+- If you use potentiometers in series with the LEDs to control color vs. a digital input be sure to check the power dissipation, or they might burn out
 
 ## Notes for the 3008 ADC
 - Vdd: Power supply. set to 5V (3.3V also acceptable)
