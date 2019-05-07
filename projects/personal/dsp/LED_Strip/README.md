@@ -29,6 +29,10 @@
 - Adafruit MCP3008
 - Xilinx Nexys2 Development Board
 
+## LED Power Notes
+- Recommended N channel MOSFET: [IRLB8721](https://www.jameco.com/z/IRLB8721PBF-Infineon-Technologies-IRLB8721-HEXFET-reg-Power-N-Channel-MOSFET_2210626.html)
+
+
 ## Notes for the 3008 ADC
 - Vdd: Power supply. set to 5V (3.3V also acceptable)
 - Vref: Max imput voltage to ADC. Set to 5V for audio (3.3V also acceptable)
