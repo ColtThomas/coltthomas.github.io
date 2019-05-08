@@ -3,16 +3,11 @@
 
 This repository is where I store my school and small personal projects for reference.  It will be updated over time as I continue through school.  Below is an outline of some of the files included:
 
-/**********************
-    Portfolio HTML 
-**********************/
+##Portfolio HTML 
 
-Visual documentation and presentation can be found using this link. - cmthomas000.github.io/index.html
-This was done as practice for HTML and Javascript
+Visual documentation and presentation can be found using this [link](cmthomas000.github.io/index.html).This was done as practice for HTML and Javascript
 
-/**********************
-    Projects 
-**********************/
+##Projects 
 
 All projects and sample code can be found in the /projects directory:
 
@@ -24,7 +19,7 @@ All projects and sample code can be found in the /projects directory:
 
 
 School Projects included:
--Laser Tag Junior Project
--Digital Circuits labs in Verilog
--Embedded C class projects
--Matlab scripts from signal processing classes
+- Laser Tag Junior Project
+- Digital Circuits labs in Verilog
+- Embedded C class projects
+- Matlab scripts from signal processing classes
