@@ -15,6 +15,7 @@
 **TODO:**
 - ~~Clock correction (Max input freq: 3.6 MHz for 5 Vref, 1.35 MHz for 2.7 Vref,2.3MHz for 3.3Vref)~~
 - ~~Create ICEstick ADC connection verification module; LED indicative for positive serial connection~~
+- Run [analogContinuous.ino](https://github.com/pedvide/ADC/blob/master/examples/analogContinuousRead/analogContinuousRead.ino) on the Teensy to see if you can read ADC values. Check both ADCs so you can do dual channel
 - SPI drivers
 - Fix ICEstick FPGA: unable to program board for some reason... try Lattice Diamond software
 - Investigate usage of Teensy 3.2 microcontroller
