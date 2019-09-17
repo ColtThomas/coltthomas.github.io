@@ -1,13 +1,34 @@
 module statemachine(output reg out, input B, input clk, input A, input rst, output reg [1:0] stateOut);
+/* State machine description: 
+         (IDLE)----------------------
+           |                                |
+        [B == TRUE] - F - - - -             |
+           |                   |            |
+	   T                   |            |
+	   |                   |            |
+        (ERROR)            [A == TRUE] - F --
+	                       |
+	                       T
+	                       |
+	                   (WAITFORB) ------
+			       |           |
+			  [B == TRUE] - F --  
+			       |
+			       T
+			       |
+	                    (DONE *OUT=1*)
+			    
+	**SYNCHRONOUS RESET -> IDLE**
+	
+*/
+localparam 	IDLE=0, WAITFORB=1,DONE=2, ERROR=3;
 
-localparam 	IDLE=0, WAITFORB=1,
-			DONE=2, ERROR=3;
-
-reg [1:0] 	state,
-			nxtState;
+reg [1:0] 	state, nxtState;
 	
 // State Registers	
-always @(posedge clk) begin
+	
+// Synchronous reset; make asynch by uncommenting reset signal in sensitivity list
+always @(posedge clk /*, posedge rst*/) begin 
 	if(rst) begin	
 		state <= IDLE;
 	end else begin
