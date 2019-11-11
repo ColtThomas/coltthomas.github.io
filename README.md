@@ -7,6 +7,10 @@ This repository is where I store my school and small personal projects for refer
 
 Visual documentation and presentation can be found using this [link](https://cmthomas000.github.io/index).This was done as practice for HTML and Javascript
 
+## CheatSheet
+
+For personal reference if I need to brush up on any information. This is where I'll put code examples, mathematic and algorithmic explanations, etc. Example projects may be included in the future.
+
 ## Projects 
 
 All projects and sample code can be found in the /projects directory:
