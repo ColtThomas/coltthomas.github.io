@@ -58,8 +58,10 @@ free(data1);
 
 ### Error Directive
 
-`#if DEFINED(THING)`
-`# define DERP 6`
-`#else`
-`# error "THING not defined"`
-`#endif`
+```C
+#if DEFINED(THING)
+# define DERP 6
+#else
+# error "THING not defined"
+#endif
+```
