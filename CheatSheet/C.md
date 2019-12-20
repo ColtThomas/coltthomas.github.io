@@ -1,3 +1,16 @@
+## Behind the scenes
+
+### Preprocessor
+
+Before your code is actually compiled, the preprocessor does the following:
+* Removes comments
+* Gets all include files. <Angle brackets> look in the standard compiler includes, and "double quotes" tells the compiler to search from the current directory.
+* Macro expansion. Macros can either be an object (#define foo), or a function (#define foo()). Multiline macros contain a \ to indicate new line:
+       #define divide(a,b) ((a)/  \
+                              (b))
+
+## Code Examples
+
 ### Define a Struct
 
 struct sock {
