@@ -3,7 +3,7 @@
 This is useful if you are trying to brush up on C after awhile or are looking to prepare for an interview.
 
 ## External Resources
-[Best questions for embedded programmers] (https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/)
+[Best questions for embedded programmers](https://rmbconsulting.us/publications/a-c-test-the-0x10-best-questions-for-would-be-embedded-programmers/)
 
 ## Behind the scenes
 
