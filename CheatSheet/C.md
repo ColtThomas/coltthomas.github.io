@@ -9,7 +9,20 @@ Before your code is actually compiled, the preprocessor does the following:
        #define divide(a,b) ((a)/  \
                               (b))
 
+The preprocessor will interpred directives such as:
+#define
+#error
+#if,elif,else
+
 ## Code Examples
+
+### Static
+static int a;  
+
+A static keyword is used as follows:
+* if a static variable is declared in the body of a function, it will maintain its value between function invocations
+* if a static variable is declared in a module (outside of the body of a function) then is is a localized global
+* a function declared static may only be called by other functions within that module
 
 ### Define a Struct
 
@@ -41,3 +54,12 @@ struct thing *data1; // Pointer of the data type
   }
 
 free(data1);
+
+
+### Error Directive
+
+#if DEFINED(THING)
+# define DERP 6
+#else
+# error "THING not defined"
+#endif
