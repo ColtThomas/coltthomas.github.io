@@ -59,7 +59,22 @@ Variable that can change unexpectedly. Examples include:
 This is a **super useful** keyword for interrupts. Also note that a pointer can also be volatile if you have a buffer or queue whose index is updated.
 
 
+### Simple Bit Operations
 
+
+```C
+#define BIT3 (0x1 << 3)
+
+static int a;
+
+void set_bit3(void) {
+a |= BIT3;
+
+}
+void clear_bit3(void) {
+a &= ~BIT3;
+}
+```
 
 ### Define a Struct
 
