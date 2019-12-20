@@ -21,6 +21,13 @@ The preprocessor will interpred directives such as:
 #error
 #if,elif,else
 
+### Stack
+Less space, more speed
+
+### Heap
+Lots of space, less speed
+
+
 ## Code Examples
 
 ### Static
@@ -42,6 +49,17 @@ int const * a const; //declares a to be a const pointer to a const integer (mean
 ```
 
 The const keyword is useful since you can tell how the variables were intended to be used. The compiler will do the work to make sure the variable (or function return value) is read-only. This also makes optimization at the compiler level way easier.
+
+### Volatile
+Variable that can change unexpectedly. Examples include:
+* Hardware registers (if you have a read-only register it should be a const volatile)
+* Non-stack variables
+* Variables shared by multiple tasks in a multi-threaded application
+
+This is a **super useful** keyword for interrupts. Also note that a pointer can also be volatile if you have a buffer or queue whose index is updated.
+
+
+
 
 ### Define a Struct
 
