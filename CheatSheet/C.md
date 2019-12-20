@@ -34,7 +34,7 @@ struct sock {
 };
 
 ### Dynamic Array using Malloc
-
+```C
 struct thing *data1; // Pointer of the data type 
  memset(data1, 0, sizeof(struct thing)*datacount);  // Init all structs to 0
   data1[0].number = 1;
@@ -54,7 +54,7 @@ struct thing *data1; // Pointer of the data type
   }
 
 free(data1);
-
+```
 
 ### Error Directive
 
