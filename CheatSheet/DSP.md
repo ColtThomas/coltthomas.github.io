@@ -1,3 +1,0 @@
-# DSP Cheatsheet
-
-## Filter design
