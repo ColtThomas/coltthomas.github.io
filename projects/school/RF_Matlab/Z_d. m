@@ -1,4 +1,0 @@
-function [Z] = Z_d(Z_0,Z_L,beta_d)
-    lZ_L = Z_L/Z_0;
-    Z = Z_0*(lZ_L+1i*tan(beta_d))/(1+1i*lZ_L*tan(beta_d));
-end
